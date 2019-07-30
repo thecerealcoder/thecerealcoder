@@ -1,0 +1,33 @@
+.navbar{
+    padding: 0px 9px;
+}
+
+#cereal { 
+    max-width: 28px;
+    max-height: auto;
+    padding-bottom: 2.5px;
+} 
+
+.navbar-brand{
+    font-family: 'Press Start 2P', cursive;
+    padding: 0px 0px;
+    padding-top: 5px;
+    padding-left: 7px;
+}
+
+.bg-dark {
+    background-color: #026670 !important;
+}
+.navbar-dark{
+    border-bottom: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+    box-shadow: 0px 2px 4px 0px #000000
+}
+
+.navbar-dark .navbar-brand {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
