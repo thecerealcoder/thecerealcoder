@@ -1,5 +1,7 @@
 <%include ../partials/header%>
 
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-9 mx-auto my-4 py-3 post-con">
@@ -37,13 +39,14 @@
             <h5>You must be logged in to comment!</h5>
               <% } %>
               <% if(currentUser) { %>
-            <h4>Add New Comment <i class="fas fa-comment-dots"></i><h4>
+            <h4>Add New Comment <i class="fas fa-comment-dots"></i></h4>
             <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
               <div class="form-group">
                 <input class="form-control m-0" type="text" disabled value="<%= currentUser.username %>">
               </div>
               <div class="form-group">
-                <textarea class="form-control m-0" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70" maxlength="1000"></textarea>
+                <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Write your comment..." form="add-comment-form" rows="5" cols="70" maxlength="1000"></textarea>
+                <span class="charSpan"></span>
               </div>
               <div class="form-group">
                 <button class="btn btn-success btn-sm">Comment</button>
@@ -98,7 +101,8 @@
                     <input class="form-control m-0" type="text" disabled value="<%= currentUser.username %>">
                   </div>
                   <div class="form-group">
-                    <textarea class="form-control m-0" name="comment[text]" placeholder="Your comment text..." form="edit-comment-form<%= comment._id %>" rows="5" cols="70" maxlength="1000"><%= comment.text %></textarea>
+                    <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..." form="edit-comment-form<%= comment._id %>" rows="5" cols="70" maxlength="1000"><%= comment.text %></textarea>
+                    <span class="charSpan"></span>
                   </div>
                   <div class="form-group">
                     <button class="btn btn-warning btn-sm">Update Comment <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
@@ -117,6 +121,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="/scripts/comments.js"></script>
+    
+    <script type="text/javascript" src="/scripts/characters.js"></script>
 
     <%include ../partials/footer%>

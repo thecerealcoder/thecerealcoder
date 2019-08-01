@@ -2,10 +2,13 @@ var express = require("express"),
     router = express.Router({ mergeParams: true }),
     Post = require("../models/post"),
     Comment = require("../models/comment");
-    middleware = require("../middleware");
+middleware = require("../middleware");
+
+
 
 //Post Comment
-router.post("/", middleware.isLoggedIn, (req, res) => {
+router.post("/", middleware.isLoggedIn, middleware.commentValidate, (req, res) => {
+
     Post.findById(req.params.id, (err, post) => {
         if (err || !post) {
             req.flash("error", "Post not found!");
@@ -28,29 +31,11 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     });
 });
 
-//Edit Comment
-router.get("/:comment_id/edit", middleware.checkCommentOwnership, (req,res) => {
-    Post.findById(req.params.id, (err, post) => {
-        if(err || !post) {
-            req.flash("error", "Post not found!");
-            res.redirect("back");
-        } else {
-            Comment.findById(req.params.comment_id, (err, comment) => {
-                if(err || !comment) {
-                    req.flash("error", "Comment not found!");
-                    res.redirect("back");
-                } else {
-                    res.render("comments/edit", {post_id: req.params.id, comment: comment});
-                }
-            });
-        }
-    });
-});
-
 //Update Comment
-router.put("/:comment_id", middleware.checkCommentOwnership, (req,res) => {
+router.put("/:comment_id", middleware.checkCommentOwnership, middleware.commentValidate, (req, res) => {
+
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updateComment) => {
-        if(err || !updateComment) {
+        if (err || !updateComment) {
             req.flash("error", "Comment not found!");
             res.redirect("back");
         } else {
@@ -61,9 +46,9 @@ router.put("/:comment_id", middleware.checkCommentOwnership, (req,res) => {
 });
 
 //Destroy Comment
-router.delete("/:comment_id", middleware.checkCommentOwnership, (req,res) => {
+router.delete("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
     Comment.findByIdAndRemove(req.params.comment_id, (err) => {
-        if(err) {
+        if (err) {
             req.flash("error", "Comment not found!");
             res.redirect("back");
         } else {
