@@ -31,3 +31,29 @@
 .navbar-dark .navbar-nav .nav-link {
     color: white;
 }
+
+
+.fa-search{
+    margin-left: 4px;
+    margin-top: 10px;
+    transform: scale(1.4);
+}
+
+#searchIpt { 
+        margin-top: 7px;
+        margin-right: 5px;
+        height: 25px;
+        display: none;
+        width: 0px;
+        opacity: 0;
+        transition: all 1s ease-in-out; 
+}
+
+.searchIptShow{ 
+    display: block !important;
+    width: 200px !important; 
+    opacity: 1 !important;
+}
+       
+    
+

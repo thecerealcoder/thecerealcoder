@@ -21,7 +21,7 @@ router.post("/register", middleware.toLowerCase, middleware.regValidate, (req, r
 
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
-            req.flash("error", "Database Error: " + err.message + ".");
+            req.flash("error", "Error: " + err.message + ".");
             res.redirect("/register");
         } else {
             passport.authenticate("local")(req, res, () => {
