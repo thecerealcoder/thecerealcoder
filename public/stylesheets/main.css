@@ -27,21 +27,6 @@ label{
     box-shadow: 0px 1px 8px 0px #000000;
 }
 
-.card-img-top {
-    width: 100%;
-    height: 20vh;
-    object-fit: cover;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 0px 1px 1px 0px #000000;
-    }
-
-.card{
-    background-color: #FFFFFF;
-    border-radius: 15px;
-    box-shadow: 0px 1px 2px 0px #000000;
-}
-
 a{
     color:black;
 }
@@ -136,3 +121,81 @@ a:hover{
 #body{
     background:#f5f5f5;
   }
+
+  .scene {
+    width: 275px;
+    height: 375px;
+    margin: 0px;
+    margin-top: 25px;
+    margin-bottom:100px;
+    perspective: 400px;
+    position: relative;
+  }
+  
+  .cerealBox {
+    margin-left:30px;
+    width: 275px;
+    height: 375px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform 500ms ease-in;
+    -moz-transition: transform 500ms ease-in;
+    -webkit-transition: transform 500ms ease-in; 
+    -o-transition: transform 500ms ease-in; 
+    -ms-transition: transform 500ms ease-in;  
+  }
+  
+  .face {
+    box-shadow: 0px 1px 4px 0px #000000;
+    position: absolute;
+    border: 2px solid black;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  
+  .front,
+  .back {
+    width: 275px;
+    height: 375px;
+    line-height: 200px;
+  }
+  
+  .right,
+  .left {
+    width: 50px;
+    height: 375px;
+    left: 100px;
+    line-height: 200px;
+  }
+  
+  .top,
+  .bottom {
+    width: 275px;
+    height: 50px;
+    top: 50px;
+    line-height: 100px;
+  }
+  
+  .front  { background: hsla(  0, 100%, 50%, 0.7); }
+  .right  { background: hsla( 60, 100%, 50%, 0.7); }
+  .back   { background: hsla(120, 100%, 50%, 0.7); }
+  .left   { background: hsla(180, 100%, 50%, 0.7); }
+  .top    { background: hsla(240, 100%, 50%, 0.7); }
+  .bottom { background: hsla(300, 100%, 50%, 0.7); }
+  
+  .front  { transform: rotateY(  0deg) translateZ( 25px); }
+  .back   { transform: rotateY(180deg) translateZ( 25px); }
+  
+  .right  { transform: rotateY( 90deg) translateZ(150px); }
+  .left   { transform: rotateY(-90deg) translateZ(125px); }
+  
+  .top    { transform: rotateX( 90deg) translateZ(75px); }
+  .bottom { transform: rotateX(-90deg) translateZ(300px); }
+  
+
+.cerealBox:hover {
+	transform: translateZ(25px) rotateY(180deg); 
+}
