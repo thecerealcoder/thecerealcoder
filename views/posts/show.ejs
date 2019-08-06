@@ -12,12 +12,14 @@
             </div>
             <img class="img-fluid img-thumbnail" src="<%=post.image%>">
             <p><%=post.body%></p>
+            <% if(currentUser && currentUser.isAdmin === true) { %>
             <div class="d-flex justify-content-end">
                 <a class="btn btn-primary mr-1" href="/posts/<%=post._id%>/edit">Edit</a>
                 <form class="delete-form" action="/posts/<%=post._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </div>
+            <% } %>
 
             
             <!--COMMENT SECTION START-->
@@ -84,7 +86,7 @@
             <!--Printing the comment-->
             <p style="word-wrap: break-word;"><%= comment.text %></p>
             <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
-              <% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
+              <% if (currentUser && currentUser._id.equals(comment.author.id) || currentUser && currentUser.isAdmin) { %>
             <!--Edit button used for collapsing the edit comment form-->
             <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
               Edit</a>
