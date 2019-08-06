@@ -32,28 +32,50 @@
     color: white;
 }
 
-
 .fa-search{
-    margin-left: 4px;
-    margin-top: 10px;
-    transform: scale(1.4);
+    margin-top: 4px;
+    margin-left: 10px;
+    transform: scale(1.25);
+    display: block;
+    color: white;
 }
 
-#searchIpt { 
-        margin-top: 7px;
-        margin-right: 5px;
-        height: 25px;
-        display: none;
+.search {
+    margin-top: 8px;
+}
+
+.search #searchIpt { 
+        display: block;
+        position: absolute;
+        right: 9999px;
+        visibility: hidden;
+        height: 24px;
         width: 0px;
         opacity: 0;
-        transition: all 1s ease-in-out; 
+        transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -webkit-transition: all 1s ease-in-out; 
+        -o-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;  
 }
 
-.searchIptShow{ 
-    display: block !important;
-    width: 200px !important; 
-    opacity: 1 !important;
+.search:hover #searchBtn, #searchIpt:focus + #searchBtn {
+    margin-bottom: 4px;
+    margin-left: 10px;
+    transform: scale(1.25);
+    display: block;
+    color: white;
 }
-       
+
+
+.search:hover #searchIpt, .search #searchIpt:focus { 
+    position: static;
+    width: 150px;
+    visibility: visible;
+    opacity: 1;
+
+}
+
+
     
 
