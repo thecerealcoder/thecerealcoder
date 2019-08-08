@@ -19,7 +19,7 @@ var indexRoutes         = require("./routes/index"),
 
 //More setup stuff
 
-seedDB();
+//seedDB();
 mongoose.set('useFindAndModify', false);
 mongoose.connect("mongodb://localhost/thecerealcoder", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended:true}));

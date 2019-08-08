@@ -37,6 +37,17 @@ middlewareObj.isLoggedIn = (req, res, next) => {
     res.redirect("back");
 }
 
+middlewareObj.findPost = (req, res, next) => {
+    Post.findById(req.params.id, (err,foundPost) => {
+        if(err) {
+            console.log(err);
+        } else {
+            req.post = foundPost;
+            next();
+        }
+    });
+}
+
 middlewareObj.commentValidate = [
     check("comment[text]")
         .isLength({ min: 1, max: 1000 }).withMessage("Comment must be between 1-1000 characters.")
