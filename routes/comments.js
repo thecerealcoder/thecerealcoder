@@ -18,13 +18,25 @@ router.post("/", middleware.isLoggedIn, middleware.commentValidate, (req, res) =
                 if (err) {
                     req.flash("error", "Error creating comment!");
                 } else {
-                    comment.author.id = req.user._id;
-                    comment.author.username = req.user.username;
-                    comment.save();
-                    post.comments.push(comment);
-                    post.save();
-                    req.flash("success", "Successfully added comment!");
-                    res.redirect("/posts/" + post._id);
+                    if (req.body.commentReply === "true") {
+                       Comment.findById(req.body.parentComment, (err, foundComment) => {
+                            comment.author.id = req.user._id;
+                            comment.author.username = req.user.username;
+                            comment.save();
+                            foundComment.replies.push(comment);
+                            foundComment.save();
+                            req.flash("success", "Successfully added comment!");
+                            res.redirect("/posts/" + post._id);
+                       });
+                    } else {
+                        comment.author.id = req.user._id;
+                        comment.author.username = req.user.username;
+                        comment.save();
+                        post.comments.push(comment);
+                        post.save();
+                        req.flash("success", "Successfully added comment!");
+                        res.redirect("/posts/" + post._id);
+                    }
                 }
             });
         }

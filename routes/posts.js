@@ -39,6 +39,9 @@ router.get("/:id", middleware.findPost, (req, res) => {
         .findById(req.params.id)
         .populate({
             path: "comments",
+            populate: { 
+                path: "replies"
+            },
             options: {
                 skip: ((perPage * pageNumber) - perPage),
                 limit: perPage,
