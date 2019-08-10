@@ -13,10 +13,12 @@ var commentSchema = new mongoose.Schema({
     replies: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
+            ref: "Comment",
+            autopopulate: true
         }
     ]
 });
 
+commentSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model("Comment", commentSchema);
 
