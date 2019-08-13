@@ -1,9 +1,9 @@
-var express = require("express");
-router = express.Router();
-//middleware  = require("../middleware");
+var express = require("express"),
+    router = express.Router();
+const { sanitizeQuery } = require('express-validator/filter');
 
 //Get posts from DB
-router.get("/", (req, res) => {
+router.get("/", [sanitizeQuery("search").escape()], (req, res) => {
     var perPage = 6;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
@@ -33,7 +33,7 @@ router.get("/", (req, res) => {
 
     } else {
         Post
-        .find({})
+            .find({})
             .skip((perPage * pageNumber) - perPage)
             .limit(perPage).sort({ date: "descending" })
             .exec((err, allPosts) => {

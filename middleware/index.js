@@ -48,6 +48,28 @@ middlewareObj.findPost = (req, res, next) => {
     });
 }
 
+middlewareObj.searchValidate = [
+    check("search")
+    .isLength({min: 1}).withMessage("Enter keywords to search for posts!")
+    .escape(),
+
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
+
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += " ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
+        }
+        next();
+    }
+];
+
 middlewareObj.commentValidate = [
     check("comment[text]")
         .isLength({ min: 1, max: 1000 }).withMessage("Comment must be between 1-1000 characters.")
@@ -97,6 +119,60 @@ middlewareObj.regValidate = [
 
     check("password")
         .isLength({ min: 8, max: 128 }).withMessage("Password must be at least 8 characters.")
+        .equals("confirmPass").withMessage("Passwords do not match.")
+        .escape(),
+
+        (req, res, next) => {
+            var errors = validationResult(req).array(),
+                messages = "Error: ";
+    
+            if (errors.length > 0) {
+                errors.forEach((error) => {
+                    messages += error.msg;
+                    messages += " ";
+                });
+    
+                req.flash("error", messages);
+                return res.redirect("back");
+            }
+            next();
+        }
+];
+
+middlewareObj.forgotValidate = [
+
+    check("email")
+        .isEmail().withMessage("Email must be valid and of correct format (jane@doe.com).")
+        .trim().normalizeEmail()
+        .custom(email => {
+            return User.findOne({ email: email }).then(email => {
+                if (!email) {
+                    return Promise.reject("No account with the given email address exists.");
+                }
+            });
+        }),
+
+        (req, res, next) => {
+            var errors = validationResult(req).array(),
+                messages = "Error: ";
+    
+            if (errors.length > 0) {
+                errors.forEach((error) => {
+                    messages += error.msg;
+                    messages += " ";
+                });
+    
+                req.flash("error", messages);
+                return res.redirect("back");
+            }
+            next();
+        }
+];
+
+middlewareObj.resetValidate = [
+    check("password")
+        .isLength({ min: 8, max: 128 }).withMessage("Password must be at least 8 characters.")
+        .equals("confirmPass").withMessage("Passwords do not match.")
         .escape(),
 
         (req, res, next) => {

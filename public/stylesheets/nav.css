@@ -67,13 +67,11 @@
     color: white;
 }
 
-
 .search:hover #searchIpt, .search #searchIpt:focus { 
     position: static;
     width: 150px;
     visibility: visible;
     opacity: 1;
-
 }
 
 

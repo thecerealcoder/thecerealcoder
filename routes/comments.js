@@ -1,8 +1,8 @@
 var express = require("express"),
     router = express.Router({ mergeParams: true }),
     Post = require("../models/post"),
-    Comment = require("../models/comment");
-middleware = require("../middleware");
+    Comment = require("../models/comment"),
+    middleware = require("../middleware");
 
 
 
