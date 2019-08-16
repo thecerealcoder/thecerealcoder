@@ -1,9 +1,10 @@
 var express = require("express"),
-    router = express.Router();
-const { sanitizeQuery } = require('express-validator/filter');
+    router = express.Router(),
+    Post = require("../models/post"),
+    middleware = require("../middleware");
 
 //Get posts from DB
-router.get("/", [sanitizeQuery("search").escape()], (req, res) => {
+router.get("/", middleware.searchValidate, (req, res) => {
     var perPage = 6;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;

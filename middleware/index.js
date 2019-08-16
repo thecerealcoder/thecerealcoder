@@ -1,5 +1,6 @@
 // all middleware
-var Comment = require("../models/comment");
+var Comment = require("../models/comment"),
+    Post = require("../models/post");
 const { check, validationResult } = require('express-validator');
 
 var middlewareObj = {};
@@ -57,7 +58,8 @@ middlewareObj.searchValidate = [
         var errors = validationResult(req).array(),
             messages = "Error: ";
 
-        if (errors.length > 0) {
+        if (errors.length > 0 && errors[0].value != undefined) {
+
             errors.forEach((error) => {
                 messages += error.msg;
                 messages += " ";

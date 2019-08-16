@@ -26,7 +26,7 @@
         <!--Setting up the add new comment button that is used for collapsing-->
         <div class="d-flex mt-4">
           <h4><strong>Comments <i class="fas fa-comments"></i></strong></h4>
-          <a class="btn btn-success ml-auto" role="button" data-toggle="collapse" href="#collapseComment"
+          <a class="btn btn-sm btn-success ml-auto" role="button" data-toggle="collapse" href="#collapseComment"
             aria-expanded="false" aria-controls="collapseComment">
             <i class="fas fa-plus"></i> Add Comment</a>
         </div>
@@ -89,13 +89,13 @@
             <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
             <% if (currentUser && currentUser._id.equals(comment.author.id) || currentUser && currentUser.isAdmin) { %>
             <!--Edit button used for collapsing the edit comment form-->
-            <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse"
+            <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse"
               href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
               Edit</a>
             <!--Delete comment button-->
             <form id="delete-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
               method="POST" style="display: inline;">
-              <button class="btn btn-xs btn-danger">Delete</button>
+              <button class="btn btn-sm btn-danger">Delete</button>
             </form>
             <!--Edit comment form-->
             <div class="collapse" id="collapseEdit<%= comment._id %>">
@@ -124,7 +124,7 @@
             <% if (currentUser && !(currentUser._id.equals(comment.author.id))) { %>
 
             <!-- Reply Button -->
-            <a class="btn btn-xs btn-success" role="button" data-toggle="collapse"
+            <a class="btn btn-sm btn-success" role="button" data-toggle="collapse"
               href="#collapseReply<%= comment._id %>" aria-expanded="false"
               aria-controls="collapseReply<%= comment._id %>">
               Reply</a>
@@ -155,7 +155,7 @@
 
             <% if(comment.replies.length > 0) { %>
             <!-- See Replies Button -->
-            <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse"
+            <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse"
               href="#collapseReplies<%= comment._id %>" aria-expanded="false"
               aria-controls="collapseReplies<%= comment._id %>">
               See Replies</a>
@@ -167,7 +167,8 @@
 
         <!-- Comment Replies -->
         <% if(comment.replies.length > 0) { %>
-        <% recursiveReply(comment.replies, comment) %>
+        <% var level = 1; %>
+        <% recursiveReply(comment.replies, comment, level) %>
         <% } %>
         <% }) %>
       </div>
@@ -225,9 +226,10 @@
 
 
 <!-- Recursive function for getting all replies -->
-<% function recursiveReply(replies, root) { %>
+<% function recursiveReply(replies, root, level) { %>
 <% replies.forEach(function(reply) { %>
-<div class="row collapse" id="collapseReplies<%= root._id %>">
+
+<div class="row collapse replies<%=level%>" id="collapseReplies<%= root._id %>">
   <div class="col-md-12">
     <strong>
       <% if (currentUser && currentUser._id.equals(reply.author.id)) { %>
@@ -247,13 +249,13 @@
     <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
     <% if (currentUser && currentUser._id.equals(reply.author.id) || currentUser && currentUser.isAdmin) { %>
     <!--Edit button used for collapsing the edit comment form-->
-    <a class="btn btn-xs btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= reply._id %>"
+    <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= reply._id %>"
       aria-expanded="false" aria-controls="collapse<%= reply._id %>">
       Edit</a>
     <!--Delete comment button-->
     <form id="delete-form" action="/posts/<%= post._id %>/comments/<%= reply._id %>?_method=DELETE" method="POST"
       style="display: inline;">
-      <button class="btn btn-xs btn-danger">Delete</button>
+      <button class="btn btn-sm btn-danger">Delete</button>
     </form>
     <!--Edit comment form-->
     <div class="collapse" id="collapseEdit<%= reply._id %>">
@@ -281,7 +283,7 @@
     <% if (currentUser && !(currentUser._id.equals(reply.author.id))) { %>
 
     <!-- Reply Button -->
-    <a class="btn btn-xs btn-success" role="button" data-toggle="collapse" href="#collapseReply<%= reply._id %>"
+    <a class="btn btn-sm btn-success" role="button" data-toggle="collapse" href="#collapseReply<%= reply._id %>"
       aria-expanded="false" aria-controls="collapseReply<%= reply._id %>">
       Reply</a>
 
@@ -311,8 +313,10 @@
     <hr>
   </div>
 </div>
+
 <% if(reply.replies.length > 0) { %>
-  <% recursiveReply(reply.replies, root) %>
+  <% level++; %>
+  <% recursiveReply(reply.replies, root, level) %>
 <% } %>
 <% }) %>
 <% } %>

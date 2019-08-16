@@ -1,11 +1,9 @@
-var express = require("express");
-router = express.Router();
-passport = require("passport");
-moment = require("moment"),
-    User = require("../models/user");
-Post = require("../models/post");
-Comment = require("../models/comment");
-middleware = require("../middleware");
+var express = require("express"),
+    router = express.Router(),
+    moment = require("moment"),
+    Post = require("../models/post"),
+    Comment = require("../models/comment"),
+    middleware = require("../middleware");
 
 //Create new post
 router.post("/", (req, res) => {

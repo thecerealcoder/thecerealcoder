@@ -16,12 +16,11 @@
 }
 
 .bg-dark {
-    background-color: #026670 !important;
+    background-color: #252c64!important;
 }
 .navbar-dark{
     border-bottom: 1px solid #dee2e6;
     border-top: 1px solid #dee2e6;
-    box-shadow: 0px 2px 4px 0px #000000
 }
 
 .navbar-dark .navbar-brand {
@@ -33,8 +32,8 @@
 }
 
 .fa-search{
-    margin-top: 4px;
-    margin-left: 10px;
+    padding-top: 4px;
+    padding-left: 4px;
     transform: scale(1.25);
     display: block;
     color: white;
@@ -42,6 +41,7 @@
 
 .search {
     margin-top: 8px;
+    margin-left: 4px;
 }
 
 .search #searchIpt { 
@@ -60,14 +60,15 @@
 }
 
 .search:hover #searchBtn, #searchIpt:focus + #searchBtn {
-    margin-bottom: 4px;
-    margin-left: 10px;
+    padding-bottom: 4px;
+    padding-left: 4px;
     transform: scale(1.25);
     display: block;
     color: white;
 }
 
 .search:hover #searchIpt, .search #searchIpt:focus { 
+    margin-right: 4px;
     position: static;
     width: 150px;
     visibility: visible;
