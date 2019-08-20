@@ -19,25 +19,38 @@
     </header>
 
     <div class="container">
-        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;"">
+            <% var boxNum = 0; %>
             <%posts.forEach((post) => { %>
-            <div class="scene col-lg-4 col-md-6 col-sm-12 mx-auto">
-                <div class="cerealBox mx-auto">
-                    <div class="face front">
-                        <div>
-                            <a href="/posts/<%=post._id%>">
-                                <h4><%= post.name %></h4>
-                            </a>
-                            <p><%= post.date %></p>
+                    <div class="scene col-lg-4 col-md-6 col-sm-12 mx-auto">
+                        <div class="cerealBox mx-auto">
+                            <div class="face front">
+                                <div>
+                                    <a href="/posts/<%=post._id%>">
+                                        <h4><%= post.name %></h4>
+                                    </a>
+                                    <p><%= post.date %></p>
+                                </div>
+                            </div>
+                            <div class="face back"></div>
+                            <div class="face top"></div>
+                            <div class="face bottom"></div>
+                            <div class="face left"></div>
+                            <div class="face right"></div>
                         </div>
                     </div>
-                    <div class="face back"></div>
-                    <div class="face top"></div>
-                    <div class="face bottom"></div>
-                    <div class="face left"></div>
-                    <div class="face right"></div>
-                </div>
+            <% boxNum++; %>
+            <% if (boxNum % 3 === 0 || boxNum === posts.length) { %>
+            <div class="shelf">
+            <div class="base"></div>
+            <div class="head"></div>
             </div>
+            <% } else { %>
+                <div class="shelf" style="display:none;">
+                    <div class="base"></div>
+                    <div class="head"></div>
+                </div>
+                <% } %>
             <% }); %>
         </div>
     </div>
@@ -52,26 +65,26 @@
             <% } %>
      
             <% if (current == 1) { %>
-            <li class="page-item disabled"><a class="page-link">«</a></li>
+            <li class=" page-item disabled"><a class="page-link">«</a></li>
             <% } else { %>
             <li class="page-item"><a class="page-link" href="/?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
             <% } %>
      
             <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
             <% if (i !== 1) { %>
-            <li class="page-item disabled"><a class="page-link">...</a></li>
+            <li class=" page-item disabled"><a class="page-link">...</a></li>
             <% } %>
             <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
             <% if (i == current) { %>
             <li class="page-item active"><a class="page-link"><%= i %></a></li>
-            <% } else { %> 
+            <% } else { %>
             <li class="page-item"><a class="page-link" href="/?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
             <% } %>
             <% if (i == Number(current) + 4 && i < pages) { %>
-            <li class="page-item disabled"><a class="page-link">...</a></li>
+            <li class=" page-item disabled"><a class="page-link">...</a></li>
             <% } %>
             <% } %>
-     
+
             <% if (current == pages) { %>
             <li class="page-item disabled"><a class="page-link">»</a></li>
             <% } else { %>
@@ -79,7 +92,7 @@
             <% } %>
      
             <% if (current == pages) { %>
-            <li class="page-item disabled"><a class="page-link">Last</a></li>
+            <li class=" page-item disabled"><a class="page-link">Last</a></li>
             <% } else { %>
             <li class="page-item"><a class="page-link" href="/?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
             <% } %>
@@ -89,5 +102,6 @@
 </div>
 
 
+<script type="text/javascript" src="/scripts/shelves.js"></script> 
 
 <% include ../partials/footer.ejs %>
