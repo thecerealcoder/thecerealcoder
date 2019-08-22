@@ -48,15 +48,14 @@
         display: block;
         position: absolute;
         right: 9999px;
-        visibility: hidden;
         height: 24px;
         width: 0px;
         opacity: 0;
-        transition: all 1s ease-in-out;
-        -moz-transition: all 1s ease-in-out;
-        -webkit-transition: all 1s ease-in-out; 
-        -o-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;  
+        transition: width .75s ease-in-out, opacity .75s ease-in-out;
+        -moz-transition: width .75s ease-in-out, opacity .75s ease-in-out;
+        -webkit-transition: width .75s ease-in-out, opacity .75s ease-in-out;
+        -o-transition: width .75s ease-in-out, opacity .75s ease-in-out;
+        -ms-transition: width .75s ease-in-out, opacity .75s ease-in-out; 
 }
 
 .search:hover #searchBtn, #searchIpt:focus + #searchBtn {
@@ -70,9 +69,10 @@
 .search:hover #searchIpt, .search #searchIpt:focus { 
     margin-right: 4px;
     position: static;
+    height: 24px;
     width: 150px;
-    visibility: visible;
     opacity: 1;
+    transition: width .75s ease-in-out, opacity .75s ease-in-out, right 0s ease-in-out 1s;
 }
 
 

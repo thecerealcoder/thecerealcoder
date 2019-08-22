@@ -13,6 +13,7 @@ var express            = require("express"),
 //Declaring routes for Router pkg config
 var indexRoutes         = require("./routes/index"),
     authRoutes          = require("./routes/auth"),
+    aboutRoutes          = require("./routes/about"),
     postRoutes          = require("./routes/posts"),
     commentRoutes       = require("./routes/comments");
     
@@ -53,10 +54,9 @@ app.use((req,res,next) => {
 //Router pkg setup
 app.use(indexRoutes);
 app.use(authRoutes);
+app.use("/about", aboutRoutes);
 app.use("/posts", postRoutes);
 app.use("/posts/:id/comments", commentRoutes);
-//app.use("/:id/comments", commentRoutes);
-
 
 //Listen for port
 app.listen(3000, () => {

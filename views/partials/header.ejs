@@ -30,7 +30,7 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="/About">About</a>
           </li>
           <% if(!currentUser) { %>
           <li class="nav-item dropdown">
@@ -62,9 +62,9 @@
             <a class="nav-link" href="/logout">Logout</a>
           </li>
           <% } %>
-          <li class="nav-item search">
+          <li class="nav-item">
             <form action="/" method="GET" class="form-inline">
-              <div class="form-group">
+              <div class="form-group search">
                 <input type="text" name="search" id="searchIpt" placeholder="Search" class="form-control">
                 <i class="fas fa-search" id="searchBtn"></i>
               </div>
