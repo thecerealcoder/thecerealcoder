@@ -1,5 +1,5 @@
 body{
-    background-color: #EBEBE3;
+    background-color: #EBEEE7;
     background-blend-mode: lighten;
 }
 
@@ -20,11 +20,21 @@ label{
     width: 65%;
     margin: auto;
 }
+
 .alert{
-    background-color: #E0E4CC;
-    border: 1px solid darkslategray;
+    color: white;
+    background-color: #2C356A;
+    border-style: none;
     border-radius: 10px;
-    box-shadow: 0px 1px 8px 0px #000000;
+    box-shadow: 0px 0px 25px -20px #000000;
+}
+
+#alertDiv, #queryDiv {
+    padding: 0px;
+}
+
+.dropdown-menu{
+    background-color: #E6EBD2;
 }
 
 a{
@@ -32,28 +42,45 @@ a{
 }
 
 .replies1{
-    padding-left:70px !important;
+    padding-left:50px !important;
 }
 
 .replies2{
-    padding-left:140px !important;
+    padding-left:100px !important;
 }
 
 .replies3{
-    padding-left:210px !important;
+    padding-left:150px !important;
 }
 
 .replies4{
-    padding-left:280px !important;
+    padding-left:200px !important;
+}
+
+.replies5{
+    padding-left:250px !important;
+}
+
+.replies6{
+    padding-left:300px !important;
+}
+
+.replies7{
+    padding-left:350px !important;
+}
+
+.replies8{
+    padding-left:400px !important;
 }
 
 div[class*="replies"]{
-    padding-left:280px;
+    padding-left:400px;
 }
 
 a:hover{
     text-decoration: none;
-}
+    color: blue;
+} 
 .jumbotron{
      background: url("/codevector.png") no-repeat center center;
      background-size: 700px;
@@ -74,36 +101,75 @@ a:hover{
 }
 
 .post-con{
-    background-color: lightgray;
+    background-color: #E6EBD2;
     border-radius: 10px;
     margin-top: 25px;
     margin-bottom: 20px;
+    box-shadow: 0px 0px 25px -20px #000000;
+}
+
+.postDiv {
+    width: 85%;
+    margin: auto;
+}
+
+.regDiv {
+    width: 65%;
+    margin: auto;
+}
+
+.regInput { 
+    width: 100%;
+}
+
+.comDiv {
+    width: 95%;
+    margin: auto;
+}
+
+.thumbDiv{
+    margin-top:15%;
+}
+
+.thumb{
+    border-radius:5px;
+}
+
+#readMore{
+    display: block !important;
+    line-height: 0px !important;
+    margin-top: 60px;
+}
+
+.accCreate{
+    width: 60%;
+    height: 40px;
+}
+
+.fa-plus{
+    transform:scale(.75);
+}
+
+#seeReplies{
+    color: grey;
+    opacity: .5;
+}
+
+label{
+    text-align: left
 }
 
 @media all and (min-width: 1500px){
-    .post-con{
-        max-width:1300px;
-    }
 }
 
 @media all and (max-width: 1200px){
-    .post-con{
-        max-width:1000px
-    }
 }
 
 @media all and (max-width: 992px){
-    .post-con{
-        max-width: 750px;
-    }
 }
 
 
 @media all and (max-width: 768px){
-    
-    .post-con{
-        max-width:550px;
-    }
     .jumbotron{
         background-size:500px;
         min-height: 275px;
@@ -124,10 +190,6 @@ a:hover{
 }
 
 @media all and (max-width: 576px) {
-    
-    .post-con{
-        max-width:475px;
-    }
     .jumbotron{
         background-size: 400px;
         min-height: 230px;
@@ -152,6 +214,48 @@ a:hover{
 #body{
     background:#f5f5f5;
   }
+
+input[type=text], input[type=email], input[type=password] {
+  border-style: none;
+  background: none;
+  border-bottom: 1px black solid;
+  border-radius: 0px !important;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus,
+input[type=text]:active, input[type=email]:active, input[type=password]:active  {
+    outline: none !important;
+    background: none !important;
+    box-shadow: none !important;
+   -webkit-box-shadow: none !important;
+}
+
+button:focus, button:active, a[role=button]:focus, a[role=button]:active{
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+button{
+    padding: 4px 7px !important;
+}
+
+form #searchIpt, form #searchIpt:active, form #searchIpt:focus{
+    border: 1px rgba(0,0,0,.2) solid !important;
+    background-color: white !important;
+}
+
+textarea {
+    border: 1px black solid !important;
+  }
+
+textarea:focus, textarea:active {
+    outline: none;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+
 
   .scene {
     width: 275px;
@@ -212,7 +316,7 @@ a:hover{
     line-height: 100px;
   }
   
-  .front  { background: url("/cerealbox.png");}
+  .front  { background: transparent url("/cerealbox.png") no-repeat;}
   .right  { background-color: #B04741;}
   .back   { background-color: #B04741;}
   .left   { 
@@ -231,7 +335,7 @@ a:hover{
   .bottom { transform: rotateX(-90deg) translateZ(275px); }
   
 
-.cerealBox:hover {
+.cerealBox:hover, .cerealBox:active {
 	transform: rotateY(180deg); 
 }
 

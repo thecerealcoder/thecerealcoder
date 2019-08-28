@@ -9,9 +9,10 @@ var express = require("express"),
 router.post("/", (req, res) => {
     var name = req.body.name,
         body = req.body.body,
+        thumbnail = req.body.thumbnail,
         date = moment().format("MMMM Do YYYY");
 
-    var newPost = { name: name, body: body, date: date };
+    var newPost = { name: name, body: body, thumbnail: thumbnail, date: date };
 
     Post.create(newPost, (err, post) => {
         if (err) {

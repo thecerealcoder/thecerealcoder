@@ -6,25 +6,29 @@
             <div class="text-center">
                 <h1>Register</h1>
             </div>
-            <div class="text-center">
+            <div class="text-center regDiv">
                 <form id="regForm" class="text-center" action="/register" method="POST">
                     <div class="form-group">
-                        <input class="form-control" type="text" id="username" placeholder="Username" name="username"
+                        <label for="username">Username</label>
+                        <input class="form-control regInput" type="text" id="username" placeholder="Username" name="username"
                             pattern="^[a-zA-Z0-9_.-]*$" minlength="4" maxlength="15"
                             title="Username cannot contain any special characters and must be between 4-15 characters long."
                             required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="email" id="email" placeholder="Email" name="email" required>
+                        <label for="email">Email</label>
+                        <input class="form-control regInput" type="email" id="email" placeholder="Email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" id="password" placeholder="Password" name="password"
+                        <label for="password">Password</label>
+                        <input class="form-control regInput" type="password" id="password" placeholder="********" name="password"
                             minlength="8" required>
                     </div>
-                    <div class="form-group">
-                        <input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm Password" class="form-control" required>
+                    <div class="form-group pb-4">
+                        <label for="confirmPass">Confirm Password</label>
+                        <input type="password" id="confirmPass" name="confirmPass" placeholder="********" class="form-control regInput" required>
                       </div>
-                      <button id="submit" class="btn btn-success btn-sm">Submit</button>
+                      <button id="submit" class="btn btn-success btn-sm accCreate">Create Account</button>
                 </form>
             </div>
         </div>

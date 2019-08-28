@@ -16,7 +16,7 @@
 }
 
 .bg-dark {
-    background-color: #252c64!important;
+    background-color: #A1C794 !important;
 }
 .navbar-dark{
     border-bottom: 1px solid #dee2e6;
@@ -37,12 +37,12 @@
 	width:0;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid #fff;
+	border-bottom: 6px solid #E6EBD2;
 	position:absolute;
 	bottom:-1px;
 	left:50%;
-	margin:0 0 0 -3px;
-	z-index:100;
+	margin: 0 0 0 -3px;
+    z-index: 100;
 }
 
 .dropdown-menu{
@@ -59,6 +59,15 @@
 .dropdown #searchDrop {
     height: 60px !important;
     justify-content: center;
+}
+
+.dropdown #loginDrop {
+    height: 325px !important;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    color:blue;
 }
 
 .searchForm {

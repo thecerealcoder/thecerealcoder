@@ -3,17 +3,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-9 mx-auto my-4 py-3 post-con">
-      <div class="text-center">
-        <h1><a><%=post.name%></a></h1>
-        <p class="mb-0 pb-0">Published <%=post.date%></p>
-        <p class="mt-0 pt-0">By TheCerealCoder</p>
+    <div class="col-md-11 mx-auto my-4 py-3 post-con">
+      <div class="postDiv">
+        <h5 class="mb-0 pb-2"><%=(post.date.toUpperCase())%></h5>
+        <h2><%=post.name%></h2>
+        <p class="pb-4"><%=post.body%></p>
       </div>
-      <img class="img-fluid img-thumbnail" src="<%=post.image%>">
-      <p><%=post.body%></p>
       <% if(currentUser && currentUser.isAdmin === true) { %>
       <div class="d-flex justify-content-end">
-        <a class="btn btn-primary mr-1" href="/posts/<%=post._id%>/edit">Edit</a>
+        <button class="btn btn-primary mr-1" href="/posts/<%=post._id%>/edit">Edit</button>
         <form class="delete-form" action="/posts/<%=post._id%>?_method=DELETE" method="POST">
           <button class="btn btn-danger">Delete</button>
         </form>
@@ -22,11 +20,11 @@
 
 
       <!--COMMENT SECTION START-->
-      <div class="well">
+      <div class = "comDiv">
         <!--Setting up the add new comment button that is used for collapsing-->
         <div class="d-flex mt-4">
           <h4><strong>Comments <i class="fas fa-comments"></i></strong></h4>
-          <a class="btn btn-sm btn-success ml-auto" role="button" data-toggle="collapse" href="#collapseComment"
+          <a class="btn btn-sm btn-success ml-auto my-auto" role="button" data-toggle="collapse" href="#collapseComment"
             aria-expanded="false" aria-controls="collapseComment">
             <i class="fas fa-plus"></i> Add Comment</a>
         </div>
@@ -36,7 +34,7 @@
 
         <!--Collapse Add a comment form START-->
         <div class="collapse" id="collapseComment">
-          <div class="well pl-3" style="border-left: 5px solid #00C851;">
+          <div class="pl-3" style="border-left: 5px solid #00C851;">
             <% if(!currentUser) { %>
             <h5>You must be logged in to comment!</h5>
             <% } %>
@@ -99,7 +97,7 @@
             </form>
             <!--Edit comment form-->
             <div class="collapse" id="collapseEdit<%= comment._id %>">
-              <div class="well pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+              <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
                 <h4>Edit Comment <i class="fas fa-edit"></i></h4>
                 <form id="edit-comment-form<%= comment._id %>"
                   action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
@@ -131,18 +129,14 @@
 
             <!--Reply Comment Form  -->
             <div class="collapse" id="collapseReply<%= comment._id %>">
-              <div class="well pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+              <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
                 <h4>Reply Comment <i class="fas fa-reply"></i></h4>
                 <form id="reply-comment-form<%= comment._id %>" action="/posts/<%= post._id %>/comments" method="POST">
-                  <div class="form-group">
-                    <input class="form-control m-0" type="text" disabled value="chia">
-                  </div>
                   <div class="form-group">
                     <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
                       form="reply-comment-form<%= comment._id %>" rows="5" cols="70" maxlength="1000"></textarea>
                     <input type="hidden" name="commentReply" value="true" checked>
                     <input type="hidden" name="parentComment" value="<%= comment.id %>" checked>
-                    <span class="charSpan"></span>
                   </div>
                   <div class="form-group">
                     <button class="btn btn-warning btn-sm">Comment<span class="glyphicon glyphicon-comment"
@@ -155,10 +149,10 @@
 
             <% if(comment.replies.length > 0) { %>
             <!-- See Replies Button -->
-            <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse"
+            <a id="seeReplies" role="button" data-toggle="collapse"
               href="#collapseReplies<%= comment._id %>" aria-expanded="false"
               aria-controls="collapseReplies<%= comment._id %>">
-              See Replies</a>
+              <%=comment.replies.length%> Replies</a>
             <% } %>
 
             <hr>
@@ -228,7 +222,6 @@
 <!-- Recursive function for getting all replies -->
 <% function recursiveReply(replies, root, level) { %>
 <% replies.forEach(function(reply) { %>
-
 <div class="row collapse replies<%=level%>" id="collapseReplies<%= root._id %>">
   <div class="col-md-12">
     <strong>
@@ -259,7 +252,7 @@
     </form>
     <!--Edit comment form-->
     <div class="collapse" id="collapseEdit<%= reply._id %>">
-      <div class="well pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+      <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
         <h4>Edit Comment <i class="fas fa-edit"></i></h4>
         <form id="edit-comment-form<%= reply._id %>"
           action="/posts/<%= post._id %>/comments/<%= reply._id %>?_method=PUT" method="POST">
@@ -289,18 +282,14 @@
 
     <!--Reply Comment Form  -->
     <div class="collapse" id="collapseReply<%= reply._id %>">
-      <div class="well pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
+      <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
         <h4>Reply Comment <i class="fas fa-reply"></i></h4>
         <form id="reply-comment-form<%= reply._id %>" action="/posts/<%= post._id %>/comments" method="POST">
-          <div class="form-group">
-            <input class="form-control m-0" type="text" disabled value="chia">
-          </div>
           <div class="form-group">
             <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
               form="reply-comment-form<%= reply._id %>" rows="5" cols="70" maxlength="1000"></textarea>
             <input type="hidden" name="commentReply" value="true" checked>
             <input type="hidden" name="parentComment" value="<%= reply.id %>" checked>
-            <span class="charSpan"></span>
           </div>
           <div class="form-group">
             <button class="btn btn-warning btn-sm">Comment<span class="glyphicon glyphicon-comment"
@@ -317,8 +306,9 @@
 <% if(reply.replies.length > 0) { %>
   <% level++; %>
   <% recursiveReply(reply.replies, root, level) %>
+  <% level--; %>
 <% } %>
-<% }) %>
+<% }); %>
 <% } %>
 
 <script type="text/javascript" src="/scripts/characters.js"></script>
