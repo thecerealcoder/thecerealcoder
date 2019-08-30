@@ -35,7 +35,7 @@
           <% if(!currentUser) { %>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#login" role="button" id="dropdownLogin">Login</a>
-            <div class="dropdown-menu dropdown-menu-right hide" id="loginDrop" tabindex="-1">
+            <div class="dropdown-menu dropdown-menu-right hide" id="loginDrop">
               <form class="px-4 py-3 text-center" action="/login" method="POST">
                 <div class="form-group">
                   <input class="form-control w-100" type="text" id="formUser" placeholder="Username" name="username">
@@ -52,29 +52,40 @@
             </div>
           </li>
           <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link"><i class="fas fa-user"></i> <%= currentUser.username %></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link" id="dropdownUser"><i class="fas fa-user"></i> <%= currentUser.username %></a>
+            <div class="dropdown-menu dropdown-menu-right hide" id="userDrop">
+              <a class="nav-link userLinks text-center" href="/logout">Logout</a>
+              <a class="nav-link userLinks text-center" id="deleteUser" href="#delete">Delete</a>
+            </div>
           </li>
           <% } %>
           <li class="nav-item dropdown">
-              <a class="nav-link" href="#search" role="button" id="dropdownSearch">
-                <i class="fas fa-search" id="searchBtn" onclick="searchBtn()"></i>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right hide" id="searchDrop" tabindex="-1">
-                  <form action="/" method="GET" class="form-inline text-center searchForm">
-                      <input type="text" name="search" id="searchIpt" placeholder="Search" class="form-control">
-                  </form>
-              </div>
+            <a class="nav-link" href="#search" role="button" id="dropdownSearch">
+              <i class="fas fa-search" id="searchBtn" onclick="searchBtn()"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right hide" id="searchDrop">
+              <form action="/" method="GET" class="form-inline text-center searchForm">
+                <input type="text" name="search" id="searchIpt" placeholder="Search" class="form-control">
+              </form>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container" id="alertDiv"> 
+  <!-- Delete Confirmation -->
+<div class="container hide" id="confirmDelete">
+  <div class="alert alert-danger text-center mt-4" role="alert">
+    <form action="/delete/:user?_method=DELETE" method="POST">
+      <p>Are you sure you would like to delete your account?</p>
+      <button class="btn btn-sm btn-danger deleteAccBtn">Delete</button>
+    </form>
+  </div>
+</div>
+
+  <div class="container" id="alertDiv">
     <%if(error && error.length > 0){ %>
     <div class="alert alert-danger text-center mt-4" role="alert">
       <%= error %>
@@ -88,6 +99,7 @@
   </div>
 
   <script type="text/javascript" src="/scripts/dropdown.js"></script>
+  <script type="text/javascript" src="/scripts/deleteuser.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

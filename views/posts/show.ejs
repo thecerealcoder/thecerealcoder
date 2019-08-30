@@ -1,6 +1,5 @@
 <%include ../partials/header%>
 
-
 <div class="container">
   <div class="row">
     <div class="col-md-11 mx-auto my-4 py-3 post-con">
@@ -11,16 +10,16 @@
       </div>
       <% if(currentUser && currentUser.isAdmin === true) { %>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-primary mr-1" href="/posts/<%=post._id%>/edit">Edit</button>
+        <button class="btn btn-sm btn-primary mr-1" href="/posts/<%=post._id%>/edit">Edit</button>
         <form class="delete-form" action="/posts/<%=post._id%>?_method=DELETE" method="POST">
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-sm btn-danger">Delete</button>
         </form>
       </div>
       <% } %>
 
 
       <!--COMMENT SECTION START-->
-      <div class = "comDiv">
+      <div class="comDiv">
         <!--Setting up the add new comment button that is used for collapsing-->
         <div class="d-flex mt-4">
           <h4><strong>Comments <i class="fas fa-comments"></i></strong></h4>
@@ -42,15 +41,11 @@
             <h4>Add New Comment <i class="fas fa-comment-dots"></i></h4>
             <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
               <div class="form-group">
-                <input class="form-control m-0" type="text" disabled value="<%= currentUser.username %>">
-              </div>
-              <div class="form-group">
                 <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Write your comment..."
                   form="add-comment-form" rows="5" cols="70" maxlength="1000"></textarea>
-                <span class="charSpan"></span>
               </div>
               <div class="form-group">
-                <button class="btn btn-success btn-sm">Comment</button>
+                <button class="btn btn-info btn-sm">Comment</button>
               </div>
             </form>
             <% } %>
@@ -87,7 +82,7 @@
             <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
             <% if (currentUser && currentUser._id.equals(comment.author.id) || currentUser && currentUser.isAdmin) { %>
             <!--Edit button used for collapsing the edit comment form-->
-            <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse"
+            <a class="btn btn-sm btn-primary" role="button" data-toggle="collapse"
               href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
               Edit</a>
             <!--Delete comment button-->
@@ -102,17 +97,13 @@
                 <form id="edit-comment-form<%= comment._id %>"
                   action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                   <div class="form-group">
-                    <input class="form-control m-0" type="text" disabled value="<%= currentUser.username %>">
-                  </div>
-                  <div class="form-group">
                     <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
                       form="edit-comment-form<%= comment._id %>" rows="5" cols="70"
                       maxlength="1000"><%= comment.text %></textarea>
                     <span class="charSpan"></span>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-warning btn-sm">Update<span class="glyphicon glyphicon-comment"
-                        aria-hidden="true"></span></button>
+                    <button class="btn btn-info btn-sm">Update</button>
                   </div>
                 </form>
               </div>
@@ -139,8 +130,7 @@
                     <input type="hidden" name="parentComment" value="<%= comment.id %>" checked>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-warning btn-sm">Comment<span class="glyphicon glyphicon-comment"
-                        aria-hidden="true"></span></button>
+                    <button class="btn btn-info btn-sm">Comment</button>
                   </div>
                 </form>
               </div>
@@ -149,10 +139,10 @@
 
             <% if(comment.replies.length > 0) { %>
             <!-- See Replies Button -->
-            <a id="seeReplies" role="button" data-toggle="collapse"
+            <button class="btn btn-sm btn-secondary" id="seeReplies" role="button" data-toggle="collapse"
               href="#collapseReplies<%= comment._id %>" aria-expanded="false"
               aria-controls="collapseReplies<%= comment._id %>">
-              <%=comment.replies.length%> Replies</a>
+              View replies</button>
             <% } %>
 
             <hr>
@@ -242,7 +232,7 @@
     <!--If the visitor is logged in and the owner of the comment, show the edit and delete buttons-->
     <% if (currentUser && currentUser._id.equals(reply.author.id) || currentUser && currentUser.isAdmin) { %>
     <!--Edit button used for collapsing the edit comment form-->
-    <a class="btn btn-sm btn-warning" role="button" data-toggle="collapse" href="#collapseEdit<%= reply._id %>"
+    <a class="btn btn-sm btn-primary" role="button" data-toggle="collapse" href="#collapseEdit<%= reply._id %>"
       aria-expanded="false" aria-controls="collapse<%= reply._id %>">
       Edit</a>
     <!--Delete comment button-->
@@ -257,16 +247,12 @@
         <form id="edit-comment-form<%= reply._id %>"
           action="/posts/<%= post._id %>/comments/<%= reply._id %>?_method=PUT" method="POST">
           <div class="form-group">
-            <input class="form-control m-0" type="text" disabled value="<%= currentUser.username %>">
-          </div>
-          <div class="form-group">
             <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
               form="edit-comment-form<%= reply._id %>" rows="5" cols="70" maxlength="1000"><%= reply.text %></textarea>
             <span class="charSpan"></span>
           </div>
           <div class="form-group">
-            <button class="btn btn-warning btn-sm">Update<span class="glyphicon glyphicon-comment"
-                aria-hidden="true"></span></button>
+            <button class="btn btn-info btn-sm">Update</button>
           </div>
         </form>
       </div>
@@ -292,8 +278,7 @@
             <input type="hidden" name="parentComment" value="<%= reply.id %>" checked>
           </div>
           <div class="form-group">
-            <button class="btn btn-warning btn-sm">Comment<span class="glyphicon glyphicon-comment"
-                aria-hidden="true"></span></button>
+            <button class="btn btn-info btn-sm">Comment</button>
           </div>
         </form>
       </div>
@@ -304,9 +289,9 @@
 </div>
 
 <% if(reply.replies.length > 0) { %>
-  <% level++; %>
-  <% recursiveReply(reply.replies, root, level) %>
-  <% level--; %>
+<% level++; %>
+<% recursiveReply(reply.replies, root, level) %>
+<% level--; %>
 <% } %>
 <% }); %>
 <% } %>

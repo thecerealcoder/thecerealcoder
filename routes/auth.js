@@ -2,6 +2,7 @@ var express = require("express"),
     router = express.Router(),
     passport = require("passport"),
     User = require("../models/user"),
+    Comment = require("../models/comment"),
     async = require("async"),
     nodemailer = require("nodemailer"),
     crypto = require("crypto"),
@@ -51,9 +52,28 @@ router.post("/login", middleware.toLowerCase, middleware.loginValidate,
 //Logout User
 router.get("/logout", (req, res) => {
     req.logout();
-    req.flash("success", "Successfully logged out!");
+    req.flash("success", "Successfully logged out.");
     res.redirect("/");
 });
+
+//Destroy User
+router.delete("/delete/:user", (req, res) => {
+  Comment.remove({"author.username": req.user.username}, (err) => {
+    if (err) {
+        console.log(err);
+    } else {        
+  User.findByIdAndRemove(req.user.id, (err) => {
+              if (err) {
+                  console.log(err);
+              } else {
+                  req.flash("success", "Successfully deleted user account.");
+                  res.redirect("/");
+              }
+        });
+      }
+  });
+});
+
 
 
 //Forgot Password
