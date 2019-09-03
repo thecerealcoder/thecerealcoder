@@ -15,7 +15,7 @@ middlewareObj.checkCommentOwnership = (req, res, next) => {
     if (req.isAuthenticated()) {
         Comment.findById(req.params.comment_id, (err, foundComment) => {
             if (err) {
-                res.redirect("back");
+                console.log(err);
             } else {
                 if (foundComment.author.id.equals(req.user._id) || req.user.isAdmin) {
                     next();
@@ -36,6 +36,24 @@ middlewareObj.isLoggedIn = (req, res, next) => {
         return next();
     }
     req.flash("error", "You need to be logged in first!");
+    res.redirect("back");
+}
+
+middlewareObj.loggedIn = (req,res,next) => {
+    if(req.user){
+        req.flash("error", "You are already logged in!");
+        return res.redirect("back");
+    }
+    next();
+}
+
+middlewareObj.isAdmin = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        if(req.user.isAdmin === true) {
+            return next()
+        }
+    }
+    req.flash("error", "You must be an admin to create new posts!");
     res.redirect("back");
 }
 
@@ -95,6 +113,31 @@ middlewareObj.commentValidate = [
     }
 ];
 
+middlewareObj.postValidate = [
+    check("name")
+        .isLength({min:1, max: 75}).withMessage("Name must be between 1-75 characters")
+        .escape(),
+
+    check("thumbnail")
+        .isURL().withMessage("Must have a valid URL for thumbnail"),
+
+        (req, res, next) => {
+            var errors = validationResult(req).array(),
+                messages = "Error: ";
+    
+            if (errors.length > 0) {
+                errors.forEach((error) => {
+                    messages += error.msg;
+                    messages += ". ";
+                });
+    
+                req.flash("error", messages);
+                return res.redirect("back");
+            }
+            next();
+        }  
+];
+
 middlewareObj.contactValidate = [
     check("name")
         .isLength({ min: 1, max: 30 }).withMessage("Name must be between 1-30 characters")
@@ -103,7 +146,6 @@ middlewareObj.contactValidate = [
     check("email")
         .isEmail().withMessage("Email must be valid and of correct format (jane@doe.com)")
         .trim().escape().normalizeEmail(),
-
 
     check("message[text]")
         .isLength({ min: 1, max: 1000 }).withMessage("Message must be between 1-1000 characters")

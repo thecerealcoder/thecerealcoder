@@ -10,11 +10,7 @@ var express = require("express"),
 
 
 //Register Form
-router.get("/register", (req, res) => {
-    if (req.user) {
-        req.flash("error", "You are already logged in, you cannot register.");
-        return res.redirect("back");
-    }
+router.get("/register", middleware.loggedIn, (req, res) => {
     res.render("authorization/register");
 });
 
@@ -36,16 +32,20 @@ router.post("/register", middleware.toLowerCase, middleware.regValidate, (req, r
     });
 });
 
+router.get("/login", middleware.loggedIn, (req,res) => {
+  res.render("authorization/login");
+});
+
 
 //Login Form
-router.post("/login", middleware.toLowerCase, middleware.loginValidate,
+router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.loginValidate,
     passport.authenticate("local",
         {
-            failureRedirect: "/",
+            failureRedirect: "back",
             failureFlash: "Invalid username or password."
         }), (req, res) => {
             req.flash("success", "Welcome back, " + req.body.username + "!");
-            res.redirect("back");
+            res.redirect("/");
         });
 
 

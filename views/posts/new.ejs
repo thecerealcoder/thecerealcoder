@@ -1,23 +1,28 @@
 <%include ../partials/header%>
 
 <div class="container">
-    <h1 style="text-align:center; margin:25px auto;">Create Post</h1>
-    <div style="width:50%; margin:25px auto;">
-        <form action="/posts" method="POST">
-            <div class="form-group">
-                <input class="form-control" type="text" name="name" placeholder="name">
+    <div class="row">
+        <div class="col-md-11 mx-auto my-4 py-3 post-con">
+            <h1 style="text-align:center; margin:25px auto;">New Post</h1>
+            <div class="text-center">
+                <form action="/posts" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Title">
+                    </div>
+                    <div class="form-group pb-4">
+                        <input class="form-control" type="text" name="thumbnail" placeholder="Thumbnail URL">
+                    </div>
+                    <div class="form-group pb-2">
+                        <textarea class="form-control" id="postTextarea" type="text" name="body" placeholder="Write your post..."
+                            rows="20"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary submit">Submit</button>
+                    </div>
+                </form>
+                <a href="/">Go Back</a>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="thumbnail" placeholder="thumbnail">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" type="text" name="body" placeholder="body" rows="10"></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-            </div>
-        </form>
-        <a href="/">Go Back</a>
+        </div>
     </div>
 </div>
 

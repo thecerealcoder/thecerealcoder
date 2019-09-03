@@ -26,18 +26,16 @@
         <div class="row text-center" style="display:flex; flex-wrap: wrap;"">
             <% var boxNum = 0; %>
             <%posts.forEach((post) => { %>
-                    <div class="scene col-lg-4 col-md-6 col-sm-12 mx-auto">
+                    <div class="scene col-lg-4 col-md-6 col-sm-12 col-xs-12 mx-auto">
                         <div class="cerealBox mx-auto">
                             <div class="face front">
                                 <div>
-                                    <a href="/posts/<%=post._id%>">
                                         <h4><%= post.name %></h4>
-                                    </a>
-                                    <p><%= post.date %></p>
                                 </div>
                             </div>
                             <div class="face back">
                                 <div class="px-3 thumbDiv">
+                                    <h4 class= "pb-2"><%= post.date %></h4>
                                     <img class= "img-fluid thumb" src="<%=post.thumbnail%>">
                                     <% if(post.thumbnail === undefined) { 
                                         console.log("Thumbnail url for post \"" + post.name + "\" is offline");
@@ -116,5 +114,6 @@
 
 
 <script type="text/javascript" src="/scripts/shelves.js"></script> 
+<script type="text/javascript" src="/scripts/hover.js"></script> 
 
 <% include ../partials/footer.ejs %>

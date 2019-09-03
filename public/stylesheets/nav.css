@@ -3,16 +3,15 @@
 }
 
 #cereal { 
-    max-width: 28px;
-    max-height: auto;
-    padding-bottom: 2.5px;
+    transform: scale(.53);
+    padding-bottom: 12px;
 } 
 
 .navbar-brand{
     font-family: 'Press Start 2P', cursive;
-    padding: 0px 0px;
-    padding-top: 5px;
-    padding-left: 7px;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
 }
 
 .bg-dark {
@@ -37,7 +36,7 @@
 	width:0;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid #E6EBD2;
+	border-bottom: 6px solid white;
 	position:absolute;
 	bottom:-1px;
 	left:50%;
@@ -62,12 +61,17 @@
 }
 
 .dropdown #loginDrop {
-    height: 325px !important;
+    height: 295px !important;
 }
 
 .dropdown-item:hover {
     background-color: transparent;
     color:blue;
+}
+
+#dropdownSearch:hover, #dropdownLogin:hover {
+    text-decoration: none;
+    color: #5A9ACE !important;
 }
 
 .searchForm {
@@ -78,5 +82,8 @@
     width: 100% !important;
 }
 
+.navbar-toggler{
+    padding: 0px 2px !important;
+}
     
 

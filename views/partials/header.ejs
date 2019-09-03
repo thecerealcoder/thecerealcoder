@@ -7,6 +7,7 @@
     integrity="sha384-0c38nfCMzF8w8DBI+9nTWzApOpr1z0WuyswL4y6x/2ZTtmj/Ki5TedKeUcFusC/k" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/prism.css">
   <link rel="stylesheet" href="/stylesheets/nav.css">
   <link rel="stylesheet" href="/stylesheets/main.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -16,15 +17,14 @@
 <body>
   <nav class="navbar navbar-dark bg-dark navbar-expand-md py0">
     <div class="container-fluid">
-      <img id="cereal" src="/cereal.png">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">TheCerealCoder</a>
-      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="/"><img id="cereal" src="/cereal.png">TheCerealCoder</a>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end order-3 order-md-2" id="navbarNavDropdown">
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
@@ -33,14 +33,16 @@
             <a class="nav-link" href="/About">About</a>
           </li>
           <% if(!currentUser) { %>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown normalLogin">
             <a class="nav-link" href="#login" role="button" id="dropdownLogin">Login</a>
             <div class="dropdown-menu dropdown-menu-right hide" id="loginDrop">
-              <form class="px-4 py-3 text-center" action="/login" method="POST">
-                <div class="form-group">
+              <form class="px-4 py-3 text-center formStyle" action="/login" method="POST">
+                <div class="form-group d-flex">
+                    <i class="fas fa-user d-flex align-items-center"></i>
                   <input class="form-control w-100" type="text" id="formUser" placeholder="Username" name="username">
                 </div>
-                <div class="form-group pb-3">
+                <div class="form-group mb-3 d-flex">
+                    <i class="fas fa-key d-flex align-items-center"></i>
                   <input class="form-control w-100" type="password" id="formPass" placeholder="Password"
                     name="password">
                 </div>
@@ -51,15 +53,30 @@
               <a class="dropdown-item text-center" href="/forgot">Forgot password?</a>
             </div>
           </li>
+          <li class="nav-item mobileLogin hide">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
           <% } else { %>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown normalUser">
             <a class="nav-link" id="dropdownUser"><i class="fas fa-user"></i> <%= currentUser.username %></a>
             <div class="dropdown-menu dropdown-menu-right hide" id="userDrop">
               <a class="nav-link userLinks text-center" href="/logout">Logout</a>
-              <a class="nav-link userLinks text-center" id="deleteUser" href="#delete">Delete</a>
-            </div>
+              <a class="nav-link userLinks text-center" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>            </div>
           </li>
+          <li class="nav-item dropdown mobileUser hide">
+            <a class="nav-link" data-toggle="collapse" href="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
+              <i class="fas fa-user"></i> <%= currentUser.username %>
+            </a>
+          </li>
+          <div class="collapse pb-3" id="collapseUser">
+              <a class="nav-link subLink" href="/logout">Logout</a>
+              <a class="nav-link subLink" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>
+            </div>
           <% } %>
+        </ul>
+      </div>
+      <div class="d-flex flex-row order-2 order-md-3">
+        <ul class="flex-row nav navbar-nav navbar-right">
           <li class="nav-item dropdown">
             <a class="nav-link" href="#search" role="button" id="dropdownSearch">
               <i class="fas fa-search" id="searchBtn" onclick="searchBtn()"></i>
@@ -71,19 +88,19 @@
             </div>
           </li>
         </ul>
-      </div>
+      </div>  
     </div>
   </nav>
 
   <!-- Delete Confirmation -->
-<div class="container hide" id="confirmDelete">
-  <div class="alert alert-danger text-center mt-4" role="alert">
-    <form action="/delete/:user?_method=DELETE" method="POST">
-      <p>Are you sure you would like to delete your account?</p>
-      <button class="btn btn-sm btn-danger deleteAccBtn">Delete</button>
-    </form>
+  <div class="container collapse" id="deleteUser">
+    <div class="alert alert-danger text-center mt-4" role="alert">
+      <form action="/delete/:user?_method=DELETE" method="POST">
+        <p>Are you sure you would like to delete your account?</p>
+        <button class="btn btn-sm btn-danger deleteAccBtn">Delete</button>
+      </form>
+    </div>
   </div>
-</div>
 
   <div class="container" id="alertDiv">
     <%if(error && error.length > 0){ %>
@@ -99,7 +116,6 @@
   </div>
 
   <script type="text/javascript" src="/scripts/dropdown.js"></script>
-  <script type="text/javascript" src="/scripts/deleteuser.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

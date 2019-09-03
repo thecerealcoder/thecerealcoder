@@ -4,9 +4,9 @@
   <div class="row">
     <div class="col-md-11 mx-auto my-4 py-3 post-con">
       <div class="postDiv">
-        <h5 class="mb-0 pb-2"><%=(post.date.toUpperCase())%></h5>
-        <h2><%=post.name%></h2>
-        <p class="pb-4"><%=post.body%></p>
+        <h5 class="mb-0 pb-2"><%=(post.date.toUpperCase().replace(",",""))%></h5>
+        <h1><%=post.name%></h1>
+        <p class="pb-4 pBody"><%-post.body%></p>
       </div>
       <% if(currentUser && currentUser.isAdmin === true) { %>
       <div class="d-flex justify-content-end">
@@ -296,6 +296,7 @@
 <% }); %>
 <% } %>
 
+<script src="/prism.js"></script>
 <script type="text/javascript" src="/scripts/characters.js"></script>
 
 <%include ../partials/footer%>

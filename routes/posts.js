@@ -6,11 +6,11 @@ var express = require("express"),
     middleware = require("../middleware");
 
 //Create new post
-router.post("/", (req, res) => {
+router.post("/", middleware.isAdmin, middleware.postValidate, (req, res) => {
     var name = req.body.name,
         body = req.body.body,
         thumbnail = req.body.thumbnail,
-        date = moment().format("MMMM Do YYYY");
+        date = moment().format("MMMM Do, YYYY");
 
     var newPost = { name: name, body: body, thumbnail: thumbnail, date: date };
 
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
 });
 
 //New post route
-router.get("/new", (req, res) => {
+router.get("/new", middleware.isAdmin, (req, res) => {
     res.render("posts/new");
 });
 
