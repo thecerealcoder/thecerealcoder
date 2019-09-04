@@ -134,7 +134,7 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 }
 
 .thumbDiv{
-    margin-top:15%;
+    margin-top:10%;
 }
 
 .thumb{
@@ -241,6 +241,68 @@ label{
         text-align: center;
         background-color: #92B586 ;
     }
+    #searchDrop {
+        width: 95.5vw !important;
+    }
+
+    /* Downsize CerealBoxes */
+
+    .scene{
+        width: 200px !important;
+        height: 275px !important;
+    }
+    .cerealBox {
+        width: 200px !important;
+        height: 275px !important;
+    }
+
+
+  .face {
+      font-size: 12px !important;
+  }
+
+  .front,
+  .back {
+    width: 200px !important;
+    height: 275px !important;
+  }
+  
+  .right,
+  .left {
+    height: 275px !important;
+  }
+  
+  .top,
+  .bottom {
+    width: 200px !important;
+  }
+
+  .front  { transform: rotateY(  0deg) translateZ(50px) !important; }
+  .back   { transform: rotateY(180deg) translateZ(50px) !important; }
+  
+  .right  { transform: rotateY( 90deg) translateZ(50px) !important; }
+  .left   { transform: rotateY(-90deg) translateZ(150px) !important; }
+  
+  .top    { transform: rotateX( 90deg) translateZ(100px) !important; }
+  .bottom { transform: rotateX(-90deg) translateZ(175px) !important; }
+
+  .front  { background-size: 225px 275px !important}
+  .left   {background-size: 100px 275px !important}
+
+  .thumbDiv h4, .front h4{ 
+      font-size: 1rem;
+  }
+
+  .thumbDiv{
+     margin-top: 5%;
+  }
+
+ .back{
+     line-height: 160px !important;
+ }
+  .navbar-brand{
+      font-size: .95rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -357,14 +419,28 @@ textarea:focus, textarea:active {
     width: 275px;
     height: 375px;
     position: relative;
-    transform-style: preserve-3d;
+
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
-    transition: transform 500ms ease-in;
-    -moz-transition: transform 500ms ease-in;
-    -webkit-transition: -webkit-transform 500ms ease-in; 
-    -o-transition: transform 500ms ease-in; 
-    -ms-transition: transform 500ms ease-in; 
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    -webkit-transition: -webkit-transform 500ms ease-in,
+                        transform 500ms ease-in;
+    -moz-transition: -moz-transform 500ms ease-in,
+                     transform 500ms ease-in;
+    -ms-transition: -ms-transform 500ms ease-in,
+                    transform 500ms ease-in;
+    -o-transition: -o-transform 500ms ease-in,
+                    -webkit-transform 500ms ease-in,
+                    transform 500ms ease-in;
+    transition: -webkit-transform 500ms ease-in,
+                -moz-transform 500ms ease-in,
+                -ms-transform 500ms ease-in,
+                -o-transform 500ms ease-in,
+                transform 500ms ease-in;
+    
   }
   
   .face {
@@ -383,7 +459,6 @@ textarea:focus, textarea:active {
 
   .front,
   .back {
-    transition: all 500ms ease-in;
     width: 275px;
     height: 375px;
     line-height: 200px;
@@ -410,6 +485,7 @@ textarea:focus, textarea:active {
   .back   { background-color: #C0C2BD;}
   .left   { 
             background: white url("/nutritionlabel.png") no-repeat center top;
+            background-size: 100px 375px;
         }
   .top    { background-color: #C0C2BD;}
   .bottom { background-color: #C0C2BD;}
@@ -422,14 +498,18 @@ textarea:focus, textarea:active {
   
   .top    { transform: rotateX( 90deg) translateZ(100px); }
   .bottom { transform: rotateX(-90deg) translateZ(275px); }
+
+  .front h4 {
+      margin-top: 2.5%;
+  }
   
 
 .cerealBox:hover, .hoverEffect {
+    -webkit-transform:  -webkit-rotateY(180deg);
+    -moz-transform: -moz-rotateY(180deg); 
+    -o-transform: -o-rotateY(180deg);
+    -ms-transform: -ms-rotateY(180deg);
     transform: rotateY(180deg); 
-    -webkit-transform: rotateY(180deg); 
-    -moz-transform: rotateY(180deg); 
-    -o-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
 }
 
 
@@ -479,6 +559,21 @@ code[class*="language-"], pre[class*="language-"] {
     white-space: pre-wrap;
 }
 
-.rowpagination {
-    border-radius: 20px;
+.pagination .active .page-link {
+    background-color: #8CAD80 !important;
+    border-color: white !important;
+}
+
+.pagination > li > a {
+    background: #A1C794 !important;
+    color: white !important;
+}
+
+.pagination .page-item .page-first{
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+}
+.pagination .page-item .page-last{
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
 }
