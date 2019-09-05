@@ -12,8 +12,6 @@
     </div>
 </div>
 
-</div>
-
 <div class="post-con container">
     <header class="jumbotron">
         <div class="d-flex flex-column">
@@ -23,11 +21,11 @@
     </header>
 
     <div class="container">
-        <div class="row text-center" style="display:flex; flex-wrap: wrap;"">
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
             <% var boxNum = 0; %>
             <%posts.forEach((post) => { %>
                     <div class="scene col-lg-4 col-md-6 col-sm-12 col-xs-12 mx-auto">
-                        <div class="cerealBox mx-auto">
+                        <div class="cerealBox cerealBox<%=boxNum+1%> mx-auto">
                             <div class="face front">
                                 <div>
                                         <h4><%= post.name %></h4>

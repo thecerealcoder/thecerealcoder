@@ -6,7 +6,7 @@ var validEmail;
 var validName;
 var validMessage;
 
-fname.addEventListener("keyup", (e) => {
+fname.addEventListener("keyup", function(e) {
     validName = fname.checkValidity();
     console.log(validName);
     if(validEmail && validName && validMessage) {
@@ -16,11 +16,11 @@ fname.addEventListener("keyup", (e) => {
     }
 });
 
-fname.addEventListener("focusout", (e) => {
+fname.addEventListener("focusout", function(e) {
     fname.reportValidity();
 });
 
-email.addEventListener("keyup", (e) => {
+email.addEventListener("keyup", function(e) {
     validEmail = email.checkValidity();
     console.log(validEmail);
     if(validEmail && validName && validMessage) {
@@ -30,11 +30,11 @@ email.addEventListener("keyup", (e) => {
     }
 });
 
-email.addEventListener("focusout", (e) => {
+email.addEventListener("focusout", function(e) {
     email.reportValidity();
 });
 
-message.addEventListener("keyup", (e) => {
+message.addEventListener("keyup", function(e) {
     validMessage = message.checkValidity();
     console.log(validMessage);
     if(validEmail && validName && validMessage) {
@@ -44,6 +44,6 @@ message.addEventListener("keyup", (e) => {
     }
 });
 
-message.addEventListener("focusout", (e) => {
+message.addEventListener("focusout", function(e) {
     message.reportValidity();
 });

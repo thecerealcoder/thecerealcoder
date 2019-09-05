@@ -191,6 +191,67 @@ label{
         right: 0px !important;
         left: auto !important;
     }
+
+    /* Downsize CerealBox Size */
+
+    .scene{
+        width: 225px !important;
+        height: 325px !important;
+        -webkit-perspective: 450px !important;
+        -ms-perspective: 450px !important;
+        perspective: 450px !important;
+    }
+    .cerealBox {
+        width: 225px !important;
+        height: 325px !important;
+    }
+
+    .face {
+        font-size: 16px !important;
+    }
+
+  .front,
+  .back {
+    width: 225px !important;
+    height: 325px !important;
+  }
+  
+  .right,
+  .left {
+    height: 325px !important;
+  }
+  
+  .top,
+  .bottom {
+    width: 225px !important;
+  }
+
+  .front  { transform: rotateY(  0deg) translateZ(50px) !important; }
+  .back   { transform: rotateY(180deg) translateZ(50px) !important; }
+  
+  .right  { transform: rotateY( 90deg) translateZ(75px) !important; }
+  .left   { transform: rotateY(-90deg) translateZ(150px) !important; }
+  
+  .top    { transform: rotateX( 90deg) translateZ(100px) !important; }
+  .bottom { transform: rotateX(-90deg) translateZ(175px) !important; }
+
+  .scene .cerealBox .front  { background-size: 225px 325px !important}
+  .left   {background-size: 100px 325px !important}
+
+  .thumbDiv h4, .front h4{ 
+    font-size: 1.1rem;
+}
+
+.thumbDiv{
+    margin-top: 10%;
+ }
+ 
+ .back{
+    line-height: 180px !important;
+ }
+ .navbar-brand{
+     font-size: 1.15rem;
+ }
 }
 
 
@@ -250,6 +311,9 @@ label{
     .scene{
         width: 200px !important;
         height: 275px !important;
+        -webkit-perspective: 400px !important;
+        -ms-perspective: 400px !important;
+        perspective: 400px !important;
     }
     .cerealBox {
         width: 200px !important;
@@ -286,7 +350,7 @@ label{
   .top    { transform: rotateX( 90deg) translateZ(100px) !important; }
   .bottom { transform: rotateX(-90deg) translateZ(175px) !important; }
 
-  .front  { background-size: 225px 275px !important}
+  .scene .cerealBox .front  { background-size: 200px 275px !important}
   .left   {background-size: 100px 275px !important}
 
   .thumbDiv h4, .front h4{ 
@@ -328,6 +392,32 @@ label{
 
     textarea.form-control{
         width: 100% !important;
+    }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .front  { z-index: 3;
+              transition: opacity .75s ease-in-out; }
+    .back   { opacity: 0; 
+              transition: opacity .75s ease-in-out; }
+    
+    .right  { opacity:0; }
+    .left   { opacity: 0; }
+    
+    .top    { opacity: 0; }
+    .bottom { opacity: 0; }
+
+    .cerealBox{
+        padding-top: 25px;
+    }
+
+    .cerealBox:hover .front, .hoverEffect .front {
+        opacity: 0;
+    }
+
+    .cerealBox:hover .back, .hoverEffect .back {
+        opacity: 1;
+        z-index: 3;
     }
 }
 
@@ -408,9 +498,9 @@ textarea:focus, textarea:active {
     width: 275px;
     height: 375px;
     margin-top: 25px;
-    perspective: 400px;
-    -webkit-perspective: 400px;
-    -ms-perspective: 400px;
+    -webkit-perspective: 500px;
+    -ms-perspective: 500px;
+    perspective: 500px;
     position: static;
     z-index: 2;
   }
@@ -450,7 +540,6 @@ textarea:focus, textarea:active {
     color: white;
     text-align: center;
     box-shadow:  0px 0px 50px -30px rgba(0,0,0,0.25), 0px 40px 85px -64px rgba(0,0,0,0.25);
-
   }
   
   .cerealBox a{
@@ -480,7 +569,33 @@ textarea:focus, textarea:active {
     line-height: 100px;
   }
   
-  .front  { background: transparent url("/cerealbox.png") no-repeat;}
+
+
+  .cerealBox1 .front{
+    background: url("/cover1.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+  .cerealBox2 .front{
+    background: url("/cover2.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+  .cerealBox3 .front{
+    background: url("/cover3.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+  .cerealBox4 .front{
+    background: url("/cover4.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+  .cerealBox5 .front{
+    background: url("/cover5.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+  .cerealBox6 .front{
+    background: url("/cover6.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+  }
+
   .right  { background-color: #C0C2BD;}
   .back   { background-color: #C0C2BD;}
   .left   { 
@@ -490,7 +605,7 @@ textarea:focus, textarea:active {
   .top    { background-color: #C0C2BD;}
   .bottom { background-color: #C0C2BD;}
   
-  .front  { transform: rotateY(  0deg) translateZ(50px); }
+  .front  { transform: rotateY(0deg) translateZ(50px); }
   .back   { transform: rotateY(180deg) translateZ(50px); }
   
   .right  { transform: rotateY( 90deg) translateZ(125px); }
@@ -505,10 +620,10 @@ textarea:focus, textarea:active {
   
 
 .cerealBox:hover, .hoverEffect {
-    -webkit-transform:  -webkit-rotateY(180deg);
-    -moz-transform: -moz-rotateY(180deg); 
-    -o-transform: -o-rotateY(180deg);
-    -ms-transform: -ms-rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg); 
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
     transform: rotateY(180deg); 
 }
 
