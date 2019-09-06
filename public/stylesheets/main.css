@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 body{
     background-color: #EBEEE7;
     background-blend-mode: lighten;
@@ -91,6 +95,7 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
      background-size: 800px;
      padding-bottom: 0px !important;
      height: 350px;
+     margin-left: 6px;
 }
 
 
@@ -142,12 +147,12 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 }
 
 .accCreate{
-    width: 60% !important;
+    width: 35% !important;
     height: 30px;
 }
 
 .submit{
-    width: 20%;
+    width: 15%;
     height: 30px;
 }
 

@@ -7,8 +7,7 @@ var express            = require("express"),
       LocalStrategy    = require("passport-local"),
       User             = require("./models/user"),
       methodOverride   = require("method-override"),
-      expressSession   = require("express-session"),
-      seedDB           = require("./seeds");
+      expressSession   = require("express-session");
 
 //Declaring routes for Router pkg config
 var indexRoutes         = require("./routes/index"),
@@ -19,10 +18,17 @@ var indexRoutes         = require("./routes/index"),
     
 
 //More setup stuff
+var url = process.env.DATABASEURL || "mongodb://localhost/thecerealcoder";
 
-//seedDB();
 mongoose.set('useFindAndModify', false);
-mongoose.connect("mongodb://localhost/thecerealcoder", { useNewUrlParser: true });
+mongoose.connect(url, { 
+    useNewUrlParser: true,
+    useCreateIndex: true  
+}). then(() => {
+    console.log("Connected to DB!");
+}).catch (err => {
+    console.log("Error:", err.message);
+});
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
