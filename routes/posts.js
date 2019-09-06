@@ -61,9 +61,13 @@ router.get("/:id", middleware.findPost, (req, res) => {
 });
 
 //Edit form route
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", middleware.isAdmin, (req, res) => {
     Post.findById(req.params.id, (err, post) => {
-        res.render("posts/edit", { post: post });
+        if(err) {
+            res.redirect("back");
+        } else {
+            res.render("posts/edit", { post: post }); 
+        }
     });
 });
 

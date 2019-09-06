@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="/stylesheets/nav.css">
   <link rel="stylesheet" href="/stylesheets/main.css">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <link href="https://fonts.googleapis.com/css?family=Passion+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -62,16 +63,17 @@
             <a class="nav-link" id="dropdownUser"><i class="fas fa-user"></i> <%= currentUser.username %></a>
             <div class="dropdown-menu dropdown-menu-right hide" id="userDrop">
               <a class="nav-link userLinks text-center" href="/logout">Logout</a>
-              <a class="nav-link userLinks text-center" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>            </div>
+              <a class="nav-link userLinks text-center" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>            
+            </div>
           </li>
           <li class="nav-item dropdown mobileUser hide">
             <a class="nav-link" data-toggle="collapse" href="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
               <i class="fas fa-user"></i> <%= currentUser.username %>
             </a>
           </li>
-          <div class="collapse pb-3" id="collapseUser">
+          <div class="collapse" id="collapseUser">
               <a class="nav-link subLink" href="/logout">Logout</a>
-              <a class="nav-link subLink" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>
+              <a class="nav-link subLink mb-3" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>
             </div>
           <% } %>
         </ul>

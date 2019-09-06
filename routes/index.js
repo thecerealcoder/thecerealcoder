@@ -26,7 +26,7 @@ router.get("/", middleware.searchValidate, (req, res) => {
                             console.log(err);
                             res.redirect("back");
                         } else {
-                            message = "Search results for: \"" + req.query.search + "\"";
+                            message = "Search results for: " + req.query.search;
                             res.render("posts/index", { posts: allPosts, current: pageNumber, pages: Math.ceil(count / perPage), message: message, search: req.query.search });
                         }
                     });

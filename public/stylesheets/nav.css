@@ -38,9 +38,9 @@
 	border-right: 6px solid transparent;
 	border-bottom: 6px solid white;
 	position:absolute;
-	bottom:-1px;
+	bottom:-6px;
 	left:50%;
-	margin: 0 0 0 -3px;
+	margin: 8px 0px 0px -3px;
     z-index: 100;
 }
 
@@ -53,6 +53,11 @@
     padding: 2px;
     transform: scale(1.1);
     pointer-events: auto !important;
+    font-size: 1rem !important;
+}
+
+.fa-user{
+    font-size: 1rem !important;
 }
 
 .dropdown #searchDrop {
@@ -72,6 +77,7 @@
 #dropdownSearch:hover, #dropdownLogin:hover {
     text-decoration: none;
     color: #5A9ACE !important;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .searchForm {
@@ -84,6 +90,13 @@
 
 .navbar-toggler{
     border: none;
+}
+
+#userDrop{
+    margin-top: 5px;
+}
+#searchDrop{
+    margin-top: 5px;
 }
     
 

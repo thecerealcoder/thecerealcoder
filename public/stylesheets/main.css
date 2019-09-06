@@ -83,22 +83,16 @@ div[class*="replies"]{
 li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
     text-decoration: none;
     color: #5A9ACE !important;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 } 
 
-.jumbotron{
-     background: url("/codevector.png") no-repeat center center;
-     background-size: 700px;
-     min-height: 330px;
-     border-radius: 0px;
-     border-bottom: 2px dotted #dee2e6;
+.sign{
+     background: url("/aislesign.png") no-repeat center center;
+     background-size: 800px;
+     padding-bottom: 0px !important;
+     height: 350px;
 }
 
-.computer-text {
-    font-family: 'Press Start 2P', cursive;
-    color: black;
-    font-size: 30px;   
-    padding-left: 20px;
-}
 
 .flex-column{
     padding-bottom: 5px;
@@ -113,7 +107,7 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
     
 }
 
-#postTextarea {
+.postTextarea {
     width: 85%!important;
     margin: auto;
 }
@@ -149,17 +143,17 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 
 .accCreate{
     width: 60% !important;
-    height: 40px;
+    height: 30px;
 }
 
 .submit{
     width: 20%;
-    height: 40px;
+    height: 30px;
 }
 
 .deleteAccBtn {
     width: 20%;
-    height: 40px;
+    height: 30px;
 }
 
 .fa-plus{
@@ -186,6 +180,10 @@ label{
 }
 
 @media all and (max-width: 992px){
+    .sign {
+        background-size:600px;
+        height: 250px !important;
+    }
     #searchDrop{
         position: absolute !important;
         right: 0px !important;
@@ -238,10 +236,9 @@ label{
   .scene .cerealBox .front  { background-size: 225px 325px !important}
   .left   {background-size: 100px 325px !important}
 
-  .thumbDiv h4, .front h4{ 
-    font-size: 1.1rem;
+  .thumbDiv a, .thumbDiv h4, .front h4{ 
+    font-size: 1.3rem !important;
 }
-
 .thumbDiv{
     margin-top: 10%;
  }
@@ -256,23 +253,20 @@ label{
 
 
 @media only screen and (max-width: 768px){
-    .jumbotron{
-        background-size:500px;
-        min-height: 275px;
+    .sign{
+        background-size: 400px;
+        height: 200px !important;
     }
-    .computer-text{
-        font-size: 22px;
-    }
-    .flex-column{
+    .flex-column { 
         padding-right:5px;
     }
-    .container .shelf{
+    .container .shelf {
         display: block !important;
     }
     .scene {
         padding: 0px !important;
     }
-    .normalLogin{
+    .normalLogin {
         display: none;
     }
 
@@ -321,10 +315,6 @@ label{
     }
 
 
-  .face {
-      font-size: 12px !important;
-  }
-
   .front,
   .back {
     width: 200px !important;
@@ -353,8 +343,8 @@ label{
   .scene .cerealBox .front  { background-size: 200px 275px !important}
   .left   {background-size: 100px 275px !important}
 
-  .thumbDiv h4, .front h4{ 
-      font-size: 1rem;
+  .thumbDiv a, .thumbDiv h4, .front h4{ 
+      font-size: 1.2rem !important;
   }
 
   .thumbDiv{
@@ -370,14 +360,6 @@ label{
 }
 
 @media only screen and (max-width: 576px) {
-    .jumbotron{
-        background-size: 400px;
-        min-height: 230px;
-    }
-
-    .computer-text{
-        font-size: 18px;
-    }
     .flex-column{
         padding-top: 22px;
         padding-right: 5px;
@@ -509,6 +491,7 @@ textarea:focus, textarea:active {
     width: 275px;
     height: 375px;
     position: relative;
+    margin-top: 6px;
 
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
@@ -596,14 +579,31 @@ textarea:focus, textarea:active {
     background-size: 275px 375px !important;
   }
 
-  .right  { background-color: #C0C2BD;}
-  .back   { background-color: #C0C2BD;}
+  .cerealBox1 .back{
+    background-color: #7EC6CC;
+  }
+  .cerealBox2 .back{
+    background-color: #7E87D9;
+  }
+  .cerealBox3 .back{
+    background-color: #789C8A;
+  }
+  .cerealBox4 .back{
+    background-color: #F2B476;
+  }
+  .cerealBox5 .back{
+    background-color: #F38630;
+  }
+  .cerealBox6 .back{
+    background-color: #C09DA7;
+  }
+
+  
+  
   .left   { 
             background: white url("/nutritionlabel.png") no-repeat center top;
             background-size: 100px 375px;
         }
-  .top    { background-color: #C0C2BD;}
-  .bottom { background-color: #C0C2BD;}
   
   .front  { transform: rotateY(0deg) translateZ(50px); }
   .back   { transform: rotateY(180deg) translateZ(50px); }
@@ -616,6 +616,10 @@ textarea:focus, textarea:active {
 
   .front h4 {
       margin-top: 2.5%;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.5rem;
   }
   
 
@@ -692,3 +696,26 @@ code[class*="language-"], pre[class*="language-"] {
     border-top-right-radius: 17px;
     border-bottom-right-radius: 17px;
 }
+
+.navbar a.nav-link {
+    font-family: 'Passion One', cursive;
+    font-size: 20px;
+    padding-top: 0px; 
+    padding-bottom: 0px;
+}
+
+h1, h2, h3, h4, h5, h6, a[id=readMore] {
+    font-family: 'Passion One', cursive;
+}
+
+p, input, textarea, button, div{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+div.alert h3 {
+    margin: 0;
+}
+
+
+
+
