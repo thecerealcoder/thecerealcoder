@@ -25,7 +25,7 @@ router.post("/register", middleware.toLowerCase, middleware.regValidate, (req, r
             res.redirect("/register");
         } else {
             passport.authenticate("local")(req, res, () => {
-                req.flash("success", "Welcome to the blog " + user.username + "!");
+                req.flash("success", "Welcome to the blog, " + user.username + "!");
                 res.redirect("/");
             });
         }
