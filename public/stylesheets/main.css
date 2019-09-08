@@ -138,6 +138,9 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 
 .thumb{
     border-radius:5px;
+    width: 100%;
+    height: 12vw;
+    object-fit: cover;
 }
 
 #readMore{
@@ -158,6 +161,10 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 
 .deleteAccBtn {
     width: 20%;
+    height: 30px;
+}
+
+#addComment {
     height: 30px;
 }
 
@@ -185,6 +192,9 @@ label{
 }
 
 @media all and (max-width: 992px){
+    .thumb{
+        height: 20vw;
+    }
     .sign {
         background-size:600px;
         height: 250px !important;
@@ -258,6 +268,9 @@ label{
 
 
 @media only screen and (max-width: 768px){
+    .thumb{
+        height: 22vw;
+    }
     .sign{
         background-size: 400px;
         height: 200px !important;
@@ -365,6 +378,9 @@ label{
 }
 
 @media only screen and (max-width: 576px) {
+    .thumb{
+        height: 25vw;
+    }
     .flex-column{
         padding-top: 22px;
         padding-right: 5px;

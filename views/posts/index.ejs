@@ -34,7 +34,7 @@
                             <div class="face back">
                                 <div class="px-3 thumbDiv">
                                     <h4 class= "pb-2"><%= post.date %></h4>
-                                    <img class= "img-fluid thumb" src="<%=post.thumbnail%>">
+                                    <img class= "thumb" src="<%=post.thumbnail%>">
                                     <% if(post.thumbnail === undefined) { 
                                         console.log("Thumbnail url for post \"" + post.name + "\" is offline");
                                     }
