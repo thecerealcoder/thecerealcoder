@@ -150,7 +150,7 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 }
 
 .accCreate{
-    width: 35% !important;
+    width: 45% !important;
     height: 30px;
 }
 
@@ -159,7 +159,7 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
 }
 
 .submit{
-    width: 15%;
+    width: 20%;
     height: 30px;
 }
 
