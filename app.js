@@ -14,6 +14,7 @@ var indexRoutes         = require("./routes/index"),
     authRoutes          = require("./routes/auth"),
     aboutRoutes          = require("./routes/about"),
     postRoutes          = require("./routes/posts"),
+    legalRoutes         = require("./routes/legal"),
     commentRoutes       = require("./routes/comments");
     
 
@@ -60,6 +61,7 @@ app.use((req,res,next) => {
 //Router pkg setup
 app.use(indexRoutes);
 app.use(authRoutes);
+app.use("/legal", legalRoutes);
 app.use("/about", aboutRoutes);
 app.use("/posts", postRoutes);
 app.use("/posts/:id/comments", commentRoutes);

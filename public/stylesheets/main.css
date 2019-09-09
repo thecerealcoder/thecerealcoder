@@ -154,6 +154,10 @@ li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
     height: 30px;
 }
 
+.accAgreement{
+    width: 70%;
+}
+
 .submit{
     width: 15%;
     height: 30px;
@@ -269,7 +273,7 @@ label{
 
 @media only screen and (max-width: 768px){
     .thumb{
-        height: 22vw;
+        height: 25vw;
     }
     .sign{
         background-size: 400px;
@@ -379,7 +383,7 @@ label{
 
 @media only screen and (max-width: 576px) {
     .thumb{
-        height: 25vw;
+        height: 30vw;
     }
     .flex-column{
         padding-top: 22px;
@@ -534,13 +538,12 @@ textarea:focus, textarea:active {
                 -ms-transform 500ms ease-in,
                 -o-transform 500ms ease-in,
                 transform 500ms ease-in;
-    
+                
   }
   
   .face {
     position: absolute;
     font-size: 20px;
-    font-weight: bold;
     color: white;
     text-align: center;
     box-shadow:  0px 0px 50px -30px rgba(0,0,0,0.25), 0px 40px 85px -64px rgba(0,0,0,0.25);
@@ -572,8 +575,6 @@ textarea:focus, textarea:active {
     top: 50px;
     line-height: 100px;
   }
-  
-
 
   .cerealBox1 .front{
     background: url("/cover1.PNG") no-repeat !important;
@@ -582,23 +583,23 @@ textarea:focus, textarea:active {
   .cerealBox2 .front{
     background: url("/cover2.PNG") no-repeat !important;
     background-size: 275px 375px !important;
-  }
+}
   .cerealBox3 .front{
     background: url("/cover3.PNG") no-repeat !important;
     background-size: 275px 375px !important;
-  }
+}
   .cerealBox4 .front{
     background: url("/cover4.PNG") no-repeat !important;
     background-size: 275px 375px !important;
-  }
+}
   .cerealBox5 .front{
     background: url("/cover5.PNG") no-repeat !important;
     background-size: 275px 375px !important;
-  }
+}
   .cerealBox6 .front{
     background: url("/cover6.PNG") no-repeat !important;
     background-size: 275px 375px !important;
-  }
+}
 
   .cerealBox1 .back{
     background-color: #7EC6CC;
