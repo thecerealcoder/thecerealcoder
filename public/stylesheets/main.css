@@ -57,31 +57,31 @@ a{
 }
 
 .replies1{
-    padding-left:30px !important;
+    margin-left:30px !important;
 }
 
 .replies2{
-    padding-left:60px !important;
+    margin-left:60px !important;
 }
 
 .replies3{
-    padding-left:90px !important;
+    margin-left:90px !important;
 }
 
 .replies4{
-    padding-left:120px !important;
+    margin-left:120px !important;
 }
 
 .replies5{
-    padding-left:150px !important;
+    margin-left:150px !important;
 }
 
 .replies6{
-    padding-left:180px !important;
+    margin-left:180px !important;
 }
 
 div[class*="replies"]{
-    padding-left:180px;
+    margin-left:180px;
 }
 
 li[class="nav-item"] a:not([role=button]):hover, a:not([role=button]):hover{
@@ -382,6 +382,9 @@ label{
 }
 
 @media only screen and (max-width: 576px) {
+    .accAgreement{
+        width: 90%;
+    }
     .thumb{
         height: 30vw;
     }
@@ -524,20 +527,11 @@ textarea:focus, textarea:active {
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
     
-    -webkit-transition: -webkit-transform 500ms ease-in,
-                        transform 500ms ease-in;
-    -moz-transition: -moz-transform 500ms ease-in,
-                     transform 500ms ease-in;
-    -ms-transition: -ms-transform 500ms ease-in,
-                    transform 500ms ease-in;
-    -o-transition: -o-transform 500ms ease-in,
-                    -webkit-transform 500ms ease-in,
-                    transform 500ms ease-in;
-    transition: -webkit-transform 500ms ease-in,
-                -moz-transform 500ms ease-in,
-                -ms-transform 500ms ease-in,
-                -o-transform 500ms ease-in,
-                transform 500ms ease-in;
+    -webkit-transition: -webkit-transform 500ms ease-in;
+    -moz-transition: -moz-transform 500ms ease-in;
+    -ms-transition: -ms-transform 500ms ease-in;
+    -o-transition: -o-transform 500ms ease-in;
+    transition: transform 500ms ease-in;
                 
   }
   

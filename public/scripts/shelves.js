@@ -10,7 +10,6 @@ WidthChange(mq);
 
 function WidthChange(mq) {
     if(mq.matches) {
-        console.log("im rich");
         var count;
         if(shelves.length % 2 === 0) {
             count = 1;
