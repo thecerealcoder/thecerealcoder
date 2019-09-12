@@ -392,7 +392,9 @@ label{
         padding-top: 22px;
         padding-right: 5px;
     }
-
+    .front h4 {
+        width: 99%;
+    }
     .container .shelf{
         display: block !important;
     }
@@ -502,8 +504,6 @@ textarea:focus, textarea:active {
     -webkit-box-shadow: none !important;
 }
 
-
-
   .scene {
     width: 275px;
     height: 375px;
@@ -532,7 +532,6 @@ textarea:focus, textarea:active {
     -ms-transition: -ms-transform 500ms ease-in;
     -o-transition: -o-transform 500ms ease-in;
     transition: transform 500ms ease-in;
-                
   }
   
   .face {
