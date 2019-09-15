@@ -9,7 +9,7 @@ var express = require("express"),
 //Post Comment
 router.post("/", middleware.isLoggedIn, middleware.commentValidate, (req, res) => {
 
-    Post.findById(req.params.id, (err, post) => {
+    Post.findOne({slug: req.params.slug}, (err, post) => {
         if (err || !post) {
             req.flash("error", "Post not found!");
             res.redirect("/");
@@ -26,7 +26,7 @@ router.post("/", middleware.isLoggedIn, middleware.commentValidate, (req, res) =
                             foundComment.replies.push(comment);
                             foundComment.save();
                             req.flash("success", "Successfully added comment!");
-                            res.redirect("/posts/" + post._id);
+                            res.redirect("/posts/" + post.slug);
                        });
                     } else {
                         comment.author.id = req.user._id;
@@ -35,7 +35,7 @@ router.post("/", middleware.isLoggedIn, middleware.commentValidate, (req, res) =
                         post.comments.push(comment);
                         post.save();
                         req.flash("success", "Successfully added comment!");
-                        res.redirect("/posts/" + post._id);
+                        res.redirect("/posts/" + post.slug);
                     }
                 }
             });
@@ -52,7 +52,7 @@ router.put("/:comment_id", middleware.checkCommentOwnership, middleware.commentV
             res.redirect("back");
         } else {
             req.flash("success", "Successfully updated comment!");
-            res.redirect("/posts/" + req.params.id);
+            res.redirect("/posts/" + req.params.slug);
         }
     });
 });
@@ -65,7 +65,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
             res.redirect("back");
         } else {
             req.flash("success", "Comment successfully deleted!");
-            res.redirect("/posts/" + req.params.id);
+            res.redirect("/posts/" + req.params.slug);
         }
     });
 });

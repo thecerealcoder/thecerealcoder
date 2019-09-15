@@ -19,7 +19,7 @@ var indexRoutes         = require("./routes/index"),
     
 
 //More setup stuff
-var url = process.env.DATABASEURL || "mongodb://localhost/thecerealcoder";
+var url = process.env.DATABASEURL || "mongodb://localhost/test";
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect(url, { 
@@ -64,7 +64,7 @@ app.use(authRoutes);
 app.use("/legal", legalRoutes);
 app.use("/about", aboutRoutes);
 app.use("/posts", postRoutes);
-app.use("/posts/:id/comments", commentRoutes);
+app.use("/posts/:slug/comments", commentRoutes);
 
 //Listen for port
 app.listen(process.env.PORT || 3000, () => {

@@ -29,13 +29,13 @@ router.get("/new", middleware.isAdmin, (req, res) => {
 });
 
 //Show posts
-router.get("/:id", middleware.findPost, (req, res) => {
+router.get("/:slug", middleware.findPost, (req, res) => {
     var perPage = 3;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
 
     Post
-        .findById(req.params.id)
+        .findOne({slug: req.params.slug})
         .populate({
             path: "comments",
             options: {
@@ -61,8 +61,8 @@ router.get("/:id", middleware.findPost, (req, res) => {
 });
 
 //Edit form route
-router.get("/:id/edit", middleware.isAdmin, (req, res) => {
-    Post.findById(req.params.id, (err, post) => {
+router.get("/:slug/edit", middleware.isAdmin, (req, res) => {
+    Post.findOne({slug: req.params.slug}, (err, post) => {
         if(err) {
             res.redirect("back");
         } else {
@@ -72,26 +72,36 @@ router.get("/:id/edit", middleware.isAdmin, (req, res) => {
 });
 
 //Update post
-router.put("/:id", (req, res) => {
+router.put("/:slug", (req, res) => {
 
     req.body.post.date = moment().format("MMMM Do YYYY");
 
-    Post.findByIdAndUpdate(req.params.id, req.body.post, (err, post) => {
+    Post.findOne({slug: req.params.slug}, (err, post) => {
         if (err) {
             res.redirect("/");
         } else {
-            res.redirect("/posts/" + req.params.id);
+            post.name = req.body.post.name;
+            post.body = req.body.post.body;
+            post.date = req.body.post.date;
+            post.thumbnail = req.body.post.thumbnail;
+            post.save((err) => {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.redirect("/posts/" + post.slug);
+                }
+            });
         }
     });
 });
 
 //Destroy Post
-router.delete("/:id", middleware.findPost, (req, res) => {
+router.delete("/:slug", middleware.findPost, (req, res) => {
     Comment.remove({ _id: { $in: req.post.comments } }, (err) => {
         if (err) {
             res.redirect("/");
         } else {
-            Post.findByIdAndRemove(req.params.id, (err) => {
+            Post.findOneAndRemove(req.params.slug, (err) => {
                 if (err) {
                     res.redirect("/");
                 } else {

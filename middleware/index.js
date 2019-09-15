@@ -58,7 +58,7 @@ middlewareObj.isAdmin = (req, res, next) => {
 }
 
 middlewareObj.findPost = (req, res, next) => {
-    Post.findById(req.params.id, (err,foundPost) => {
+    Post.findOne({slug: req.params.slug}, (err,foundPost) => {
         if(err) {
             console.log(err);
         } else {

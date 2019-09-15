@@ -5,13 +5,13 @@
     <div class="col-md-11 mx-auto my-4 py-3 post-con">
       <div class="postDiv">
         <h5 class="mb-0 pb-2"><%=(post.date.toUpperCase().replace(",",""))%></h5>
-        <h1><%=post.name%></h1>
+        <h1 id="postTitle"><%=post.name%></h1>
         <p class="pb-4 pBody"><%-post.body%></p>
       </div>
       <% if(currentUser && currentUser.isAdmin === true) { %>
       <div class="d-flex justify-content-end">
-        <a class="btn btn-sm btn-primary mr-1" href="/posts/<%=post._id%>/edit" role="button">Edit</a>
-        <form class="delete-form" action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+        <a class="btn btn-sm btn-primary mr-1" href="/posts/<%=post.slug%>/edit" role="button">Edit</a>
+        <form class="delete-form" action="/posts/<%=post.slug%>?_method=DELETE" method="POST">
           <button class="btn btn-sm btn-danger">Delete</button>
         </form>
       </div>
@@ -39,7 +39,7 @@
             <% } %>
             <% if(currentUser) { %>
             <h4>Add New Comment <i class="fas fa-comment-dots"></i></h4>
-            <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
+            <form id="add-comment-form" action="/posts/<%= post.slug %>/comments" method="POST">
               <div class="form-group">
                 <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Write your comment..."
                   form="add-comment-form" rows="5" cols="70" maxlength="1000"></textarea>
@@ -86,7 +86,7 @@
               href="#collapseEdit<%= comment._id %>" aria-expanded="false" aria-controls="collapse<%= comment._id %>">
               Edit</a>
             <!--Delete comment button-->
-            <form id="delete-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE"
+            <form id="delete-form" action="/posts/<%= post.slug %>/comments/<%= comment._id %>?_method=DELETE"
               method="POST" style="display: inline;">
               <button class="btn btn-sm btn-danger">Delete</button>
             </form>
@@ -95,7 +95,7 @@
               <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
                 <h4>Edit Comment <i class="fas fa-edit"></i></h4>
                 <form id="edit-comment-form<%= comment._id %>"
-                  action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                  action="/posts/<%= post.slug %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                   <div class="form-group">
                     <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
                       form="edit-comment-form<%= comment._id %>" rows="5" cols="70"
@@ -122,7 +122,7 @@
             <div class="collapse" id="collapseReply<%= comment._id %>">
               <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
                 <h4>Reply Comment <i class="fas fa-reply"></i></h4>
-                <form id="reply-comment-form<%= comment._id %>" action="/posts/<%= post._id %>/comments" method="POST">
+                <form id="reply-comment-form<%= comment._id %>" action="/posts/<%= post.slug %>/comments" method="POST">
                   <div class="form-group">
                     <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
                       form="reply-comment-form<%= comment._id %>" rows="5" cols="70" maxlength="1000"></textarea>
@@ -163,13 +163,13 @@
           <% if (current == 1) { %>
           <li class="page-item disabled"><a class="page-link">First</a></li>
           <% } else { %>
-          <li class="page-item"><a class="page-link" href="/posts/<%= post._id %>">First</a></li>
+          <li class="page-item"><a class="page-link" href="/posts/<%= post.slug %>">First</a></li>
           <% } %>
 
           <% if (current == 1) { %>
           <li class="page-item disabled"><a class="page-link">«</a></li>
           <% } else { %>
-          <li class="page-item"><a class="page-link" href="/posts/<%= post._id %>?page=<%= Number(current) - 1 %>">«</a>
+          <li class="page-item"><a class="page-link" href="/posts/<%= post.slug %>?page=<%= Number(current) - 1 %>">«</a>
           </li>
           <% } %>
 
@@ -181,7 +181,7 @@
           <% if (i == current) { %>
           <li class="page-item active"><a class="page-link"><%= i %></a></li>
           <% } else { %>
-          <li class="page-item"><a class="page-link" href="/posts/<%= post._id %>?page=<%= i %>"><%= i %></a></li>
+          <li class="page-item"><a class="page-link" href="/posts/<%= post.slug %>?page=<%= i %>"><%= i %></a></li>
           <% } %>
           <% if (i == Number(current) + 4 && i < pages) { %>
           <li class="page-item disabled"><a class="page-link">...</a></li>
@@ -191,14 +191,14 @@
           <% if (current == pages) { %>
           <li class="page-item disabled"><a class="page-link">»</a></li>
           <% } else { %>
-          <li class="page-item"><a class="page-link" href="/posts/<%= post._id %>?page=<%= Number(current) + 1 %>">»</a>
+          <li class="page-item"><a class="page-link" href="/posts/<%= post.slug %>?page=<%= Number(current) + 1 %>">»</a>
           </li>
           <% } %>
 
           <% if (current == pages) { %>
           <li class="page-item disabled"><a class="page-link">Last</a></li>
           <% } else { %>
-          <li class="page-item"><a class="page-link" href="/posts/<%= post._id %>?page=<%= pages %>">Last</a></li>
+          <li class="page-item"><a class="page-link" href="/posts/<%= post.slug %>?page=<%= pages %>">Last</a></li>
           <% } %>
         </ul>
         <% } %>
@@ -236,7 +236,7 @@
       aria-expanded="false" aria-controls="collapse<%= reply._id %>">
       Edit</a>
     <!--Delete comment button-->
-    <form id="delete-form" action="/posts/<%= post._id %>/comments/<%= reply._id %>?_method=DELETE" method="POST"
+    <form id="delete-form" action="/posts/<%= post.slug %>/comments/<%= reply._id %>?_method=DELETE" method="POST"
       style="display: inline;">
       <button class="btn btn-sm btn-danger">Delete</button>
     </form>
@@ -245,7 +245,7 @@
       <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
         <h4>Edit Comment <i class="fas fa-edit"></i></h4>
         <form id="edit-comment-form<%= reply._id %>"
-          action="/posts/<%= post._id %>/comments/<%= reply._id %>?_method=PUT" method="POST">
+          action="/posts/<%= post.slug %>/comments/<%= reply._id %>?_method=PUT" method="POST">
           <div class="form-group">
             <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
               form="edit-comment-form<%= reply._id %>" rows="5" cols="70" maxlength="1000"><%= reply.text %></textarea>
@@ -270,7 +270,7 @@
     <div class="collapse" id="collapseReply<%= reply._id %>">
       <div class="pl-3" style="border-left: 5px solid #ffbb33; margin-top: 15px;">
         <h4>Reply Comment <i class="fas fa-reply"></i></h4>
-        <form id="reply-comment-form<%= reply._id %>" action="/posts/<%= post._id %>/comments" method="POST">
+        <form id="reply-comment-form<%= reply._id %>" action="/posts/<%= post.slug %>/comments" method="POST">
           <div class="form-group">
             <textarea class="form-control comBox m-0" name="comment[text]" placeholder="Your comment text..."
               form="reply-comment-form<%= reply._id %>" rows="5" cols="70" maxlength="1000"></textarea>
@@ -297,6 +297,7 @@
 <% } %>
 
 <script src="/prism.js"></script>
+<script type="text/javascript" src="/scripts/title.js"></script> 
 <script type="text/javascript" src="/scripts/characters.js"></script>
 
 <%include ../partials/footer%>
