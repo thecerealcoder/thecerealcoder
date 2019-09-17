@@ -120,6 +120,11 @@ a:not([role=button]):hover {
     margin: auto;
 }
 
+.postHeader {
+    width: 95%;
+    margin: auto;
+}
+
 .postDiv {
     width: 85%;
     margin: auto;
@@ -482,8 +487,11 @@ pre[class*="language-"] {
     white-space: pre-wrap;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+}
+
+pre {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
 }
 
 .pagination .active .page-link {
