@@ -495,13 +495,18 @@ pre {
 }
 
 .pagination .active .page-link {
-    background-color: #8CAD80 !important;
-    border-color: white !important;
+    background-color: #F0FFFF !important;
+    border-color: #F0FFFF !important;
+    color: #A1C794 !important;
 }
 
 .pagination>li>a {
     background: #A1C794 !important;
     color: white !important;
+}
+
+.pagination>li>a:focus {
+    box-shadow: none !important;
 }
 
 .pagination .page-item .page-first {

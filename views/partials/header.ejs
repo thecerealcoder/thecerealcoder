@@ -46,7 +46,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/About">About</a>
+                        <a class="nav-link" href="/about">About</a>
                     </li>
                     <% if(!currentUser) { %>
                         <li class="nav-item dropdown normalLogin">
@@ -73,7 +73,7 @@
                         </li>
                         <% } else { %>
                             <li class="nav-item dropdown normalUser">
-                                <a class="nav-link" id="dropdownUser"><i class="fas fa-user"></i> <%= currentUser.username %></a>
+                                <a class="nav-link" href="#user" id="dropdownUser"><i class="fas fa-user"></i> <%= currentUser.username %></a>
                                 <div class="dropdown-menu dropdown-menu-right hide" id="userDrop">
                                     <a class="nav-link userLinks text-center" href="/logout">Logout</a>
                                     <a class="nav-link userLinks text-center" data-toggle="collapse" href="#deleteUser" aria-expanded="false" aria-controls="deleteUser">Delete</a>

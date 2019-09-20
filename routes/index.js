@@ -6,8 +6,8 @@ var express = require("express"),
 //Get posts from DB
 router.get("/", middleware.searchValidate, (req, res) => {
     var perPage = 6;
-    var pageQuery = parseInt(req.query.page);
-    var pageNumber = pageQuery ? pageQuery : 1;
+    pageQuery = parseInt(req.query.page),
+        pageNumber = pageQuery ? pageQuery : 1;
 
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
