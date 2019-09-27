@@ -1,11 +1,9 @@
 html,
 body {
     overflow-x: hidden;
-}
-
-body {
     background-color: #EBEEE7;
     background-blend-mode: lighten;
+    min-height: 600px;
 }
 
 label {

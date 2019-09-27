@@ -45,7 +45,7 @@ router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.lo
         failureFlash: "Invalid username or password."
     }), (req, res) => {
         req.flash("success", "Welcome back, " + req.body.username + "!");
-        res.redirect("/");
+        res.redirect("back");
     });
 
 
