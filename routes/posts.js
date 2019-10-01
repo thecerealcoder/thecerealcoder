@@ -5,15 +5,21 @@ var express = require("express"),
     Comment = require("../models/comment"),
     middleware = require("../middleware");
 
+
+//New post route
+router.get("/new", middleware.isAdmin, (req, res) => {
+    res.render("posts/new");
+});
+
 //Create new post
 router.post("/", middleware.isAdmin, middleware.postValidate, (req, res) => {
     var name = req.body.name,
         body = req.body.body,
         thumbnail = req.body.thumbnail,
-        createdAt = new Date("<YYYY-mm-dd>"),
+        createdAt = new Date(),
         date = moment().format("MMMM Do, YYYY");
 
-    var newPost = { name: name, body: body, thumbnail: thumbnail, date: date, createdAt: createdAt };
+    var newPost = { name: name, body: body, thumbnail: thumbnail, createdAt: createdAt, date: date };
 
     Post.create(newPost, (err, post) => {
         if (err) {
@@ -22,11 +28,6 @@ router.post("/", middleware.isAdmin, middleware.postValidate, (req, res) => {
             res.redirect("/");
         }
     });
-});
-
-//New post route
-router.get("/new", middleware.isAdmin, (req, res) => {
-    res.render("posts/new");
 });
 
 //Show posts
@@ -70,7 +71,6 @@ router.get("/:slug/edit", middleware.isAdmin, (req, res) => {
 
 //Update post
 router.put("/:slug", (req, res) => {
-
 
     Post.findOne({slug: req.params.slug}, (err, post) => {
         if (err) {
