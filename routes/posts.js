@@ -41,7 +41,7 @@ router.get("/:slug", middleware.findPost, (req, res) => {
             options: {
                 skip: ((perPage * pageNumber) - perPage),
                 limit: perPage,
-                sort: { "created_at": -1 }
+                sort: { date: "descending"  }
             }
         })
         .exec((err, post) => {

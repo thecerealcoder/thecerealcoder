@@ -6,6 +6,11 @@ body {
     min-height: 600px;
 }
 
+mark {
+    background-color: yellow;
+    color: black;
+}
+
 label {
     display: block;
 }
