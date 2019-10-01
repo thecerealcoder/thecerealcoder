@@ -42,7 +42,7 @@ middlewareObj.isLoggedIn = (req, res, next) => {
 middlewareObj.loggedIn = (req,res,next) => {
     if(req.user){
         req.flash("error", "You are already logged in!");
-        return res.redirect("back");
+        return res.redirect("/");
     }
     next();
 }

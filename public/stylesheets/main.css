@@ -499,7 +499,7 @@ pre {
 
 .pagination .active .page-link {
     background-color: #F0FFFF !important;
-    border-color: #F0FFFF !important;
+    border: .75px #A1C794 solid;
     color: #A1C794 !important;
 }
 
