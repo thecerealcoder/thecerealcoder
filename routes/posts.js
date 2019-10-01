@@ -39,7 +39,7 @@ router.get("/:slug", middleware.findPost, (req, res) => {
         .findOne({slug: req.params.slug})
         .skip((perPage * pageNumber) - perPage)
         .limit(perPage)
-        .sort({ date : "descending" })
+        .sort({ createdAt : "descending" })
         .populate({path: "comments"})
         .exec((err, post) => {
             if (err) {
@@ -71,7 +71,6 @@ router.get("/:slug/edit", middleware.isAdmin, (req, res) => {
 //Update post
 router.put("/:slug", (req, res) => {
 
-    req.body.post.date = moment().format("MMMM Do YYYY");
 
     Post.findOne({slug: req.params.slug}, (err, post) => {
         if (err) {
@@ -79,8 +78,8 @@ router.put("/:slug", (req, res) => {
         } else {
             post.name = req.body.post.name;
             post.body = req.body.post.body;
-            post.date = req.body.post.date;
             post.thumbnail = req.body.post.thumbnail;
+
             post.save((err) => {
                 if(err) {
                     console.log(err);
