@@ -17,7 +17,7 @@ router.get("/", middleware.searchValidate, (req, res) => {
             .find({ name: regex })
             .skip((perPage * pageNumber) - perPage)
             .limit(perPage)
-            .sort({ date: "descending" })
+            .sort({ date : "descending" })
             .exec((err, allPosts) => {
                 Post
                     .count({ name: regex })
@@ -36,7 +36,8 @@ router.get("/", middleware.searchValidate, (req, res) => {
         Post
             .find({})
             .skip((perPage * pageNumber) - perPage)
-            .limit(perPage).sort({ date: "descending" })
+            .limit(perPage)
+            .sort({ date: "descending" })
             .exec((err, allPosts) => {
                 Post
                     .count()

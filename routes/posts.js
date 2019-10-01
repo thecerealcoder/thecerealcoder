@@ -10,9 +10,10 @@ router.post("/", middleware.isAdmin, middleware.postValidate, (req, res) => {
     var name = req.body.name,
         body = req.body.body,
         thumbnail = req.body.thumbnail,
+        createdAt = new Date("<YYYY-mm-dd>"),
         date = moment().format("MMMM Do, YYYY");
 
-    var newPost = { name: name, body: body, thumbnail: thumbnail, date: date };
+    var newPost = { name: name, body: body, thumbnail: thumbnail, date: date, createdAt: createdAt };
 
     Post.create(newPost, (err, post) => {
         if (err) {
@@ -36,14 +37,10 @@ router.get("/:slug", middleware.findPost, (req, res) => {
 
     Post
         .findOne({slug: req.params.slug})
-        .populate({
-            path: "comments",
-            options: {
-                skip: ((perPage * pageNumber) - perPage),
-                limit: perPage,
-                sort: { date: "descending"  }
-            }
-        })
+        .skip((perPage * pageNumber) - perPage)
+        .limit(perPage)
+        .sort({ date : "descending" })
+        .populate({path: "comments"})
         .exec((err, post) => {
             if (err) {
                 req.flash("error", "Post not found!");
