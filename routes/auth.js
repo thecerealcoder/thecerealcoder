@@ -39,13 +39,7 @@ router.get("/login", middleware.loggedIn, (req, res) => {
 
 
 //Login User
-router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.loginValidate, (req, res) => {
-    passport.authenticate("local", {
-        successRedirect: "back",
-        successFlash: "Welcome back, " + req.body.username + "!",
-        failureRedirect: "back",
-        failureFlash: "Invalid username or password."
-    }) (req, res);
+router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.loginValidate, middleware.authenticate, (req, res, next) => {
     });
 
 

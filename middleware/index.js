@@ -1,6 +1,7 @@
 // all middleware
 var Comment = require("../models/comment"),
     Post = require("../models/post"),
+    passport = require("passport"),
     User = require("../models/user");
 const { check, validationResult } = require('express-validator');
 
@@ -30,6 +31,13 @@ middlewareObj.checkCommentOwnership = (req, res, next) => {
         res.redirect("back");
     }
 }
+
+middlewareObj.authenticate =  passport.authenticate("local", {
+        successRedirect: "/",
+        successFlash: "Welcome back, " + req.body.username + "!",
+        failureRedirect: "back",
+        failureFlash: "Invalid username or password."
+    });
 
 middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {

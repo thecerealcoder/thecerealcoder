@@ -95,10 +95,12 @@ router.put("/:slug", (req, res) => {
 router.delete("/:slug", middleware.findPost, (req, res) => {
     Comment.remove({ _id: { $in: req.post.comments } }, (err) => {
         if (err) {
+            console.log(err);
             res.redirect("/");
         } else {
-            Post.findOneAndRemove(req.params.slug, (err) => {
+            Post.findOneAndDelete({slug: req.params.slug}, (err) => {
                 if (err) {
+                    console.log(err);
                     res.redirect("/");
                 } else {
                     res.redirect("/");
