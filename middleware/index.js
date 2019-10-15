@@ -32,12 +32,15 @@ middlewareObj.checkCommentOwnership = (req, res, next) => {
     }
 }
 
-middlewareObj.authenticate =  passport.authenticate("local", {
+middlewareObj.authenticate =  (req, res, next) => {
+
+    passport.authenticate("local", {
         successRedirect: "/",
         successFlash: "Welcome back, " + req.body.username + "!",
         failureRedirect: "back",
         failureFlash: "Invalid username or password."
-    });
+    }) (req, res, next);
+}
 
 middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -47,7 +50,7 @@ middlewareObj.isLoggedIn = (req, res, next) => {
     res.redirect("back");
 }
 
-middlewareObj.loggedIn = (req,res,next) => {
+middlewareObj.loggedIn = (req, res, next) => {
     if(req.user){
         req.flash("error", "You are already logged in!");
         return res.redirect("/");
