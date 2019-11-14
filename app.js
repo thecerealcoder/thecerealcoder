@@ -52,10 +52,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //Setting up res.locals
-app.use((req, res, next) => {
+app.use((err, req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
+    console.log(err);
     next();
 });
 

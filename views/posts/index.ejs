@@ -13,7 +13,9 @@
 </div>
 
 <div class="post-con container">
-    <div class="sign">
+    <div class="container">
+        <div class="row text-center d-flex">
+        </div>
     </div>
 
     <% if(currentUser && currentUser.isAdmin === true) { %>
@@ -21,7 +23,7 @@
     <% } %>
 
     <div class="container">
-        <div class="row text-center d-flex" style="margin-top: -.5%; flex-wrap: wrap;">
+        <div class="cerealRow row text-center d-flex">
             <% var boxNum = 0; %>
             <%posts.forEach((post) => { %>
                     <div class="scene col-lg-4 col-md-6 col-sm-12 col-xs-12 mx-auto">
