@@ -1,0 +1,556 @@
+html,
+body {
+    overflow-x: hidden;
+    background-color: #EBEEE7;
+    background-blend-mode: lighten;
+    min-height: 600px;
+}
+
+mark {
+    background-color: yellow;
+    color: black;
+}
+
+label {
+    display: block;
+}
+
+.dropdown-menu {
+    width: 300px !important;
+    height: 400px !important;
+}
+
+.dropdown-menu-right {
+    width: 300px !important;
+    height: 400px !important;
+}
+
+.form-control {
+    width: 65%;
+    margin: auto;
+}
+
+.alert {
+    color: white;
+    background-color: #4AA6DB;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px -20px #000000;
+}
+
+#deleteUser,
+#alertDiv,
+#queryDiv {
+    padding: 0px;
+}
+
+.dropdown-menu {
+    background-color: white;
+}
+
+a {
+    color: black;
+}
+
+#userDrop {
+    height: 80px !important;
+    min-width: 75px !important;
+    width: 75px !important;
+}
+
+.userLinks {
+    color: black !important;
+    padding: .25rem .5rem;
+}
+
+.replies1 {
+    margin-left: 30px !important;
+}
+
+.replies2 {
+    margin-left: 60px !important;
+}
+
+.replies3 {
+    margin-left: 90px !important;
+}
+
+.replies4 {
+    margin-left: 120px !important;
+}
+
+.replies5 {
+    margin-left: 150px !important;
+}
+
+.replies6 {
+    margin-left: 180px !important;
+}
+
+div[class*="replies"] {
+    margin-left: 180px;
+}
+
+li[class="nav-item"] a:not([role=button]):hover,
+a:not([role=button]):hover {
+    text-decoration: none;
+    color: #5A9ACE !important;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.sign {
+    background: url("/aislesign.png") no-repeat center center;
+    background-size: 800px;
+    padding-bottom: 0px !important;
+    height: 350px;
+    margin-left: 6px;
+}
+
+.flex-column {
+    padding-bottom: 5px;
+}
+
+.post-con {
+    background-color: #E6EBD2;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .1);
+}
+
+.postTextarea {
+    width: 85%!important;
+    margin: auto;
+}
+
+.postHeader {
+    width: 95%;
+    margin: auto;
+}
+
+.postDiv {
+    width: 85%;
+    margin: auto;
+}
+
+.formDiv {
+    width: 65%;
+    margin: auto;
+}
+
+.comDiv {
+    width: 95%;
+    margin: auto;
+}
+
+.thumbDiv {
+    margin-top: 10%;
+}
+
+.thumb {
+    border-radius: 5px;
+    width: 100%;
+    height: 12vw;
+    object-fit: cover;
+}
+
+#readMore {
+    display: block !important;
+    line-height: 0px !important;
+    margin-top: 40px;
+}
+
+.accCreate {
+    width: 45% !important;
+    height: 30px;
+}
+
+.accAgreement {
+    width: 70%;
+}
+
+.submit {
+    width: 20%;
+    height: 30px;
+}
+
+.deleteAccBtn {
+    width: 20%;
+    height: 30px;
+}
+
+#addComment {
+    height: 30px;
+}
+
+.fa-plus {
+    transform: scale(.75);
+}
+
+.buttonLink {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+label {
+    text-align: left
+}
+
+#body {
+    background: #f5f5f5;
+}
+
+.formStyle i {
+    padding: 10px;
+    background: #A1C794;
+    color: white;
+    width: 35px;
+    justify-content: center;
+    border-right: 1px black solid;
+}
+
+.formStyle div {
+    border: 1px black solid;
+}
+
+.formStyle input {
+    border: none !important;
+    background: white !important;
+}
+
+.formStyle input:focus {
+    border: none;
+    background: white !important;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    border-style: none;
+    background: none;
+    border-bottom: 1px black solid;
+    border-radius: 0px !important;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=text]:active,
+input[type=email]:active,
+input[type=password]:active {
+    outline: none !important;
+    background: none;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+button:focus,
+button:active,
+a[role=button]:focus,
+a[role=button]:active {
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+button {
+    padding: 4px 7px !important;
+}
+
+form #searchIpt,
+form #searchIpt:active,
+form #searchIpt:focus {
+    border: 1px rgba(0, 0, 0, .2) solid !important;
+    background-color: white !important;
+}
+
+form #searchIpt {
+    border-radius: 5px !important;
+}
+
+textarea {
+    border: 1px black solid !important;
+}
+
+textarea:focus,
+textarea:active {
+    outline: none;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+.scene {
+    width: 275px;
+    height: 375px;
+    margin-top: 25px;
+    -webkit-perspective: 500px;
+    -ms-perspective: 500px;
+    perspective: 500px;
+    position: static;
+    z-index: 2;
+}
+
+.cerealBox {
+    width: 275px;
+    height: 375px;
+    position: relative;
+    margin-top: 6px;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 500ms ease-in;
+    -moz-transition: -moz-transform 500ms ease-in;
+    -ms-transition: -ms-transform 500ms ease-in;
+    -o-transition: -o-transform 500ms ease-in;
+    transition: transform 500ms ease-in;
+}
+
+.face {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 0px 50px -30px rgba(0, 0, 0, 0.25), 0px 40px 85px -64px rgba(0, 0, 0, 0.25);
+}
+
+.cerealBox a {
+    color: white;
+}
+
+.front,
+.back {
+    width: 275px;
+    height: 375px;
+    line-height: 200px;
+}
+
+.right,
+.left {
+    width: 100px;
+    height: 375px;
+    left: 100px;
+    line-height: 200px;
+}
+
+.top,
+.bottom {
+    width: 275px;
+    height: 100px;
+    top: 50px;
+    line-height: 100px;
+}
+
+.cerealBox1 .front {
+    background: url("/cover1.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox2 .front {
+    background: url("/cover2.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox3 .front {
+    background: url("/cover3.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox4 .front {
+    background: url("/cover4.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox5 .front {
+    background: url("/cover5.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox6 .front {
+    background: url("/cover6.PNG") no-repeat !important;
+    background-size: 275px 375px !important;
+}
+
+.cerealBox1 .back {
+    background-color: #7EC6CC;
+}
+
+.cerealBox2 .back {
+    background-color: #7E87D9;
+}
+
+.cerealBox3 .back {
+    background-color: #789C8A;
+}
+
+.cerealBox4 .back {
+    background-color: #F2B476;
+}
+
+.cerealBox5 .back {
+    background-color: #F38630;
+}
+
+.cerealBox6 .back {
+    background-color: #C09DA7;
+}
+
+.left {
+    background: white url("/nutritionlabel.png") no-repeat center top;
+    background-size: 100px 375px;
+}
+
+.front {
+    transform: rotateY(0deg) translateZ(50px);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.right {
+    transform: rotateY( 90deg) translateZ(125px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(150px);
+}
+
+.top {
+    transform: rotateX( 90deg) translateZ(100px);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(275px);
+}
+
+.front h4 {
+    margin-top: 2.5%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5rem;
+}
+
+.cerealBox:hover,
+.hoverEffect {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.container .shelf {
+    position: static;
+    width: 100%;
+    height: 50%;
+    margin-top: 15px;
+    padding-bottom: 30px;
+    z-index: 1;
+}
+
+.container .shelf .base {
+    width: 100%;
+    height: 0;
+    border-bottom: 20px solid #EEEEFF;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: static;
+}
+
+.container .shelf .head {
+    width: 100%;
+    height: 15px;
+    background-color: white;
+    position: static;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.showSearch {
+    display: flex !important;
+}
+
+.pBody {
+    font-size: 20px;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-size: 12px;
+    white-space: pre-wrap;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+pre {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+}
+
+.pagination .active .page-link {
+    background-color: #F0FFFF !important;
+    border: .75px #A1C794 solid;
+    color: #A1C794 !important;
+}
+
+.pagination>li>a {
+    background: #A1C794 !important;
+    color: white !important;
+}
+
+.pagination>li>a:focus {
+    box-shadow: none !important;
+}
+
+.pagination .page-item .page-first {
+    border-top-left-radius: 17px;
+    border-bottom-left-radius: 17px;
+}
+
+.pagination .page-item .page-last {
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+}
+
+.navbar a.nav-link {
+    font-family: 'Passion One', cursive;
+    font-size: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a[id=readMore] {
+    font-family: 'Passion One', cursive;
+}
+
+p,
+input,
+textarea,
+button,
+div {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+p {
+    margin-top: 1rem;
+}
+
+div.alert h3 {
+    margin: 0;
+}
