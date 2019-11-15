@@ -44,7 +44,7 @@ middlewareObj.authenticate =  (req, res, next) => {
 
 middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
-        return next();
+      next();
     }
     req.flash("error", "You need to be logged in first!");
     res.redirect("back");
@@ -61,7 +61,7 @@ middlewareObj.loggedIn = (req, res, next) => {
 middlewareObj.isAdmin = (req, res, next) => {
     if (req.isAuthenticated()) {
         if(req.user.isAdmin === true) {
-            return next()
+            next();
         }
     }
     req.flash("error", "You must be an admin to create new posts!");
