@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.thecerealcoder.com/</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/about</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/register</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/forgot</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/login</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/how-to-add-custom-fonts-in-css-with-google-fonts-3481</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/how-to-add-background-images-to-html-elements-in-css-1722</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/how-to-add-event-listeners-to-your-program-4321</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/how-to-use-environment-variables-in-your-program-6735</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/css-media-queries-for-internet-explorer-and-microsoft-edge-1402</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/posts/making-your-website-responsive-with-css-media-queries-9121</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/legal/terms</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.thecerealcoder.com/legal/privacy</loc>
+  <lastmod>2019-11-15T06:36:04+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
