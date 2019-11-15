@@ -53,6 +53,14 @@ router.get("/", middleware.searchValidate, (req, res) => {
     }
 });
 
+router.get("/sitemap.xml", (req, res) => {
+    res.render("/sitemap.xml");
+});
+
+router.get("/robots.txt", (req, res) => {
+    res.render("/robots.txt");
+});
+
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
