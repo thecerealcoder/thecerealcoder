@@ -36,15 +36,17 @@ middlewareObj.authenticate =  (req, res, next) => {
 
     passport.authenticate("local", {
         successRedirect: "/",
-        successFlash: "Welcome back, " + req.body.username + "!",
         failureRedirect: "back",
+        successFlash: "Welcome back, " + req.body.username + "!",
         failureFlash: "Invalid username or password."
     }) (req, res, next);
+
+    next();
 }
 
 middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
-      next();
+     return next();
     }
     req.flash("error", "You need to be logged in first!");
     res.redirect("back");
@@ -61,7 +63,7 @@ middlewareObj.loggedIn = (req, res, next) => {
 middlewareObj.isAdmin = (req, res, next) => {
     if (req.isAuthenticated()) {
         if(req.user.isAdmin === true) {
-            next();
+            return next();
         }
     }
     req.flash("error", "You must be an admin to create new posts!");

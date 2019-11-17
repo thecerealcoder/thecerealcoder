@@ -39,7 +39,7 @@ router.get("/login", middleware.loggedIn, (req, res) => {
 
 
 //Login User
-router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.loginValidate, middleware.authenticate, (req, res, next) => {
+router.post("/login", middleware.loggedIn, middleware.toLowerCase, middleware.loginValidate, middleware.authenticate, (req, res) => {
 });
 
 
