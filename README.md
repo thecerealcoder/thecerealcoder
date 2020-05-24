@@ -13,7 +13,7 @@ Personal blogging site made with JavaScript. **[Live Demo](https://thecerealcode
 
 ## General info
 
-This project was created with HTML5, CSS3, and JavaScript. I used the Express framework to create the blueprint of routes for my site and mongoose to connect with MongoDB and store data such as posts, comments, and user information. With the addition of user logins, I used Passport for authentication and Express Validator for form validation.
+TheCerealCoder is a platform where I document my journey as a programmer and share the material I learn along the way. It is my hope that this site can become a medium in which others can not only improve upon their coding, but also provide valuable feedback to help refine this blog into the best possible version of itself.
 
 ## Technologies
 
