@@ -1,28 +1,31 @@
 <%include ../partials/header%>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-11 mx-auto my-4 py-3 post-con">
-                <h1 style="text-align:center; margin:25px auto;">Edit Post</h1>
-                <div class="text-center">
-                    <form action="/posts/<%=post.slug%>?_method=PUT" method="POST">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="post[name]" value="<%=post.name%>" placeholder="Title">
-                        </div>
-                        <div class="form-group pb-4">
-                            <input class="form-control" type="text" name="post[thumbnail]" value="<%=post.thumbnail%>" placeholder="Thumbnail URL">
-                        </div>
-                        <div class="form-group pb-2">
-                            <textarea class="form-control postTextarea" type="text" name="post[body]" placeholder="Write your post..." rows="20"><%=post.body%></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-sm btn-primary submit">Submit</button>
-                        </div>
-                    </form>
-                    <a href="/">Go Back</a>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-11 mx-auto my-4 py-3 post-con">
+            <h1 style="text-align:center; margin:25px auto;">Edit Post</h1>
+            <div class="text-center">
+                <form action="/posts/<%=post.slug%>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="post[name]" value="<%=post.name%>"
+                            placeholder="Title">
+                    </div>
+                    <div class="form-group pb-4">
+                        <label class="text-center font-weight-bold " for="image">Image </label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                    </div>
+                    <div class="form-group pb-2">
+                        <textarea class="form-control postTextarea" type="text" name="post[body]"
+                            placeholder="Write your post..." rows="20"><%=post.body%></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary submit">Submit</button>
+                    </div>
+                </form>
+                <a href="/">Go Back</a>
             </div>
         </div>
     </div>
+</div>
 
-    <%include ../partials/footer%>
+<%include ../partials/footer%>

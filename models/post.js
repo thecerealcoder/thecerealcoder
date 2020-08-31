@@ -5,7 +5,8 @@ var postSchema = new mongoose.Schema({
     body: String,
     createdAt: Date,
     date: String,
-    thumbnail: String,
+    image: String,
+    imageId: String,
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -14,7 +15,7 @@ var postSchema = new mongoose.Schema({
     ],
     slug: {
         type: String,
-        unique:true
+        unique: true
     }
 });
 
@@ -42,7 +43,7 @@ async function generateUniqueSlug(id, postName, slug) {
             slug = slugify(postName);
         }
         // check if a campground with the slug already exists
-        var post = await Post.findOne({slug: slug});
+        var post = await Post.findOne({ slug: slug });
         // check if a campground was found or if the found campground is the current campground
         if (!post || post._id.equals(id)) {
             return slug;

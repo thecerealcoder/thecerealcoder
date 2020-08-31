@@ -32,28 +32,28 @@ middlewareObj.checkCommentOwnership = (req, res, next) => {
     }
 }
 
-middlewareObj.authenticate =  (req, res, next) => {
+middlewareObj.authenticate = (req, res, next) => {
 
     passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "back",
         successFlash: "Welcome back, " + req.body.username + "!",
         failureFlash: "Invalid username or password."
-    }) (req, res, next);
+    })(req, res, next);
 
     next();
 }
 
 middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
-     return next();
+        return next();
     }
     req.flash("error", "You need to be logged in first!");
     res.redirect("back");
 }
 
 middlewareObj.loggedIn = (req, res, next) => {
-    if(req.user){
+    if (req.user) {
         req.flash("error", "You are already logged in!");
         return res.redirect("/");
     }
@@ -62,7 +62,7 @@ middlewareObj.loggedIn = (req, res, next) => {
 
 middlewareObj.isAdmin = (req, res, next) => {
     if (req.isAuthenticated()) {
-        if(req.user.isAdmin === true) {
+        if (req.user.isAdmin === true) {
             return next();
         }
     }
@@ -71,8 +71,8 @@ middlewareObj.isAdmin = (req, res, next) => {
 }
 
 middlewareObj.findPost = (req, res, next) => {
-    Post.findOne({slug: req.params.slug}, (err,foundPost) => {
-        if(err) {
+    Post.findOne({ slug: req.params.slug }, (err, foundPost) => {
+        if (err) {
             console.log(err);
         } else {
             req.post = foundPost;
@@ -83,8 +83,8 @@ middlewareObj.findPost = (req, res, next) => {
 
 middlewareObj.searchValidate = [
     check("search")
-    .isLength({min: 1}).withMessage("Enter keywords to search for posts ")
-    .escape(),
+        .isLength({ min: 1 }).withMessage("Enter keywords to search for posts ")
+        .escape(),
 
     (req, res, next) => {
         var errors = validationResult(req).array(),
@@ -128,27 +128,24 @@ middlewareObj.commentValidate = [
 
 middlewareObj.postValidate = [
     check("name")
-        .isLength({min:1, max: 75}).withMessage("Name must be between 1-75 characters")
+        .isLength({ min: 1, max: 75 }).withMessage("Name must be between 1-75 characters")
         .escape(),
 
-    check("thumbnail")
-        .isURL().withMessage("Must have a valid URL for thumbnail"),
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
 
-        (req, res, next) => {
-            var errors = validationResult(req).array(),
-                messages = "Error: ";
-    
-            if (errors.length > 0) {
-                errors.forEach((error) => {
-                    messages += error.msg;
-                    messages += ". ";
-                });
-    
-                req.flash("error", messages);
-                return res.redirect("back");
-            }
-            next();
-        }  
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += ". ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
+        }
+        next();
+    }
 ];
 
 middlewareObj.contactValidate = [
@@ -163,22 +160,22 @@ middlewareObj.contactValidate = [
     check("message[text]")
         .isLength({ min: 1, max: 1000 }).withMessage("Message must be between 1-1000 characters")
         .escape(),
-        
-        (req, res, next) => {
-            var errors = validationResult(req).array(),
-                messages = "Error: ";
-    
-            if (errors.length > 0) {
-                errors.forEach((error) => {
-                    messages += error.msg;
-                    messages += ". ";
-                });
-    
-                req.flash("error", messages);
-                return res.redirect("back");
-            }
-            next();
+
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
+
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += ". ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
         }
+        next();
+    }
 ];
 
 middlewareObj.regValidate = [
@@ -209,28 +206,28 @@ middlewareObj.regValidate = [
     check("password")
         .isLength({ min: 8, max: 128 }).withMessage("Password must be at least 8 characters")
         .escape()
-        .custom(((password, {req}) => {
-            if(password !== req.body.confirmPass) {
+        .custom(((password, { req }) => {
+            if (password !== req.body.confirmPass) {
                 throw new Error("Passwords do not match");
             }
             return true;
         })),
 
-        (req, res, next) => {
-            var errors = validationResult(req).array(),
-                messages = "Error: ";
-    
-            if (errors.length > 0) {
-                errors.forEach((error) => {
-                    messages += error.msg;
-                    messages += ". ";
-                });
-    
-                req.flash("error", messages);
-                return res.redirect("back");
-            }
-            next();
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
+
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += ". ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
         }
+        next();
+    }
 ];
 
 middlewareObj.forgotValidate = [
@@ -246,21 +243,21 @@ middlewareObj.forgotValidate = [
             });
         }),
 
-        (req, res, next) => {
-            var errors = validationResult(req).array(),
-                messages = "Error: ";
-    
-            if (errors.length > 0) {
-                errors.forEach((error) => {
-                    messages += error.msg;
-                    messages += ". ";
-                });
-    
-                req.flash("error", messages);
-                return res.redirect("back");
-            }
-            next();
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
+
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += ". ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
         }
+        next();
+    }
 ];
 
 middlewareObj.resetValidate = [
@@ -269,27 +266,27 @@ middlewareObj.resetValidate = [
         .equals("confirmPass").withMessage("Passwords do not match")
         .escape(),
 
-        (req, res, next) => {
-            var errors = validationResult(req).array(),
-                messages = "Error: ";
-    
-            if (errors.length > 0) {
-                errors.forEach((error) => {
-                    messages += error.msg;
-                    messages += ". ";
-                });
-    
-                req.flash("error", messages);
-                return res.redirect("back");
-            }
-            next();
+    (req, res, next) => {
+        var errors = validationResult(req).array(),
+            messages = "Error: ";
+
+        if (errors.length > 0) {
+            errors.forEach((error) => {
+                messages += error.msg;
+                messages += ". ";
+            });
+
+            req.flash("error", messages);
+            return res.redirect("back");
         }
+        next();
+    }
 ];
 
 middlewareObj.loginValidate = [
     check("username").trim().escape(),
     check("password").escape(),
-    (req,res,next) => {
+    (req, res, next) => {
         next();
     }
 ];

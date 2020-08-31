@@ -6,8 +6,8 @@
         <div class="container" id="queryDiv">
             <div class="alert alert-danger text-center mt-4" role="alert">
                 <h3><%= message %></h3>
-              </div>
             </div>
+        </div>
         <% } %>
     </div>
 </div>
@@ -19,49 +19,50 @@
     </div>
 
     <% if(currentUser && currentUser.isAdmin === true) { %>
-    <a class="btn btn-lg btn-success d-flex w-50 justify-content-center mt-4 mx-auto" href="/posts/new" role="button">Create Post</a>
+    <a class="btn btn-lg btn-success d-flex w-50 justify-content-center mt-4 mx-auto" href="/posts/new"
+        role="button">Create Post</a>
     <% } %>
 
     <div class="container">
         <div class="cerealRow row text-center d-flex">
             <% var boxNum = 0; %>
             <%posts.forEach((post) => { %>
-                    <div class="scene col-lg-4 col-md-6 col-sm-12 col-xs-12 mx-auto">
-                        <div class="cerealBox cerealBox<%=boxNum+1%> mx-auto">
-                            <div class="face front">
-                                <div>
-                                        <h4><%= post.name %></h4>
-                                </div>
-                            </div>
-                            <div class="face back">
-                                <div class="px-3 thumbDiv">
-                                    <h4 class= "pb-2"><%= post.date %></h4>
-                                    <img class= "thumb" src="<%=post.thumbnail%>">
-                                    <% if(post.thumbnail === undefined) { 
-                                        console.log("Thumbnail url for post \"" + post.name + "\" is offline");
-                                    }
-                                        %>
-                                    <a id="readMore" href="/posts/<%=post.slug%>">Read More</a>
-                                </div>
-                            </div>
-                            <div class="face top"></div>
-                            <div class="face bottom"></div>
-                            <div class="face left"></div>
-                            <div class="face right"></div>
+            <div class="scene col-lg-4 col-md-6 col-sm-12 col-xs-12 mx-auto">
+                <div class="cerealBox cerealBox<%=boxNum+1%> mx-auto">
+                    <div class="face front">
+                        <div>
+                            <h4><%= post.name %></h4>
                         </div>
                     </div>
+                    <div class="face back">
+                        <div class="px-3 thumbDiv">
+                            <h4 class="pb-2"><%= post.date %></h4>
+                            <img class="thumb" src="<%=post.image%>">
+                            <% if(post.image === undefined) { 
+                                        console.log("Image url for post \"" + post.name + "\" is offline");
+                                    }
+                                        %>
+                            <a id="readMore" href="/posts/<%=post.slug%>">Read More</a>
+                        </div>
+                    </div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                </div>
+            </div>
             <% boxNum++; %>
             <% if (boxNum % 3 === 0 || boxNum === posts.length) { %>
             <div class="shelf">
-            <div class="base"></div>
-            <div class="head"></div>
+                <div class="base"></div>
+                <div class="head"></div>
             </div>
             <% } else { %>
-                <div class="shelf" style="display:none;">
-                    <div class="base"></div>
-                    <div class="head"></div>
-                </div>
-                <% } %>
+            <div class="shelf" style="display:none;">
+                <div class="base"></div>
+                <div class="head"></div>
+            </div>
+            <% } %>
             <% }); %>
         </div>
     </div>
@@ -112,7 +113,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/scripts/shelves.js"></script> 
-<script type="text/javascript" src="/scripts/hover.js"></script> 
+<script type=" text/javascript" src="/scripts/shelves.js"></script>
+                    <script type="text/javascript" src="/scripts/hover.js"></script>
 
-<% include ../partials/footer.ejs %>
+                    <% include ../partials/footer.ejs %>

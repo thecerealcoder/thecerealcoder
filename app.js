@@ -9,6 +9,8 @@ var express = require("express"),
     methodOverride = require("method-override"),
     expressSession = require("express-session");
 
+require('dotenv').config()
+
 //Declaring routes for Router pkg config
 var indexRoutes = require("./routes/index"),
     authRoutes = require("./routes/auth"),
