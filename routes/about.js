@@ -19,9 +19,6 @@ router.post("/", middleware.contactValidate, (req, res) => {
 		},
 	});
 
-	//Decode HTML entities for emails
-	let txt = document.createElement("textarea");
-
 	var mailOptions = {
 		to: "thecerealcoder@gmail.com",
 		from: "thecerealcoder@gmail.com",
